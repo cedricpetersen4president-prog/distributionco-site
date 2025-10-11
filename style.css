@@ -5,23 +5,26 @@ Shared Stylesheet for Distribution.Co
 
 /* Base Body Styles
   -----------------
-  Sets the default font and background colors. 
+  Sets the default font and background colors.
   Note: The primary font 'Inter' is loaded via Google Fonts in each HTML file.
 */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #F9FAFB; /* cool-gray-50 */
-    color: #111827; /* gray-900 */
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb; /* cool-gray-50 */
+  color: #111827; /* gray-900 */
 }
-
+/* Test */
 /* Hero Section Custom Background
   -------------------------------
   Creates the subtle dot grid pattern for the main hero section.
 */
 .hero-bg {
-    background-color: #111827; /* navy */
-    background-image: radial-gradient(#374151 1px, transparent 1px); /* slate dot on navy */
-    background-size: 20px 20px;
+  background-color: #111827; /* navy */
+  background-image: radial-gradient(
+    #374151 1px,
+    transparent 1px
+  ); /* slate dot on navy */
+  background-size: 20px 20px;
 }
 
 /* Brand Slideshow Animation
@@ -29,5 +32,5 @@ body {
   Controls the smooth fade-in and fade-out transition for the brand logos.
 */
 #brands-slideshow-container {
-    transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
