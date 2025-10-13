@@ -82,24 +82,24 @@
                     <div class="lg:col-span-2 bg-gray-50 p-8 rounded-lg">
                         <h2 class="text-2xl font-bold text-brand-blue">Send Us a Message</h2>
                         <p class="mt-2 text-gray-600">Fill out the form below and our team will get back to you shortly.</p>
-                        <form class="mt-8 space-y-6">
+                        <form id="contact-form" class="mt-8 space-y-6">
                             <div class="grid sm:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                                    <input type="text" id="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold">
+                                    <input type="text" id="name" name="Name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold" required>
                                 </div>
                                 <div>
                                     <label for="company" class="block text-sm font-medium text-gray-700">Company Name</label>
-                                    <input type="text" id="company" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold">
+                                    <input type="text" id="company" name="Company" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold">
                                 </div>
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                <input type="email" id="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold">
+                                <input type="email" id="email" name="Email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold" required>
                             </div>
                             <div>
                                 <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                <textarea id="message" rows="5" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold"></textarea>
+                                <textarea id="message" name="Message" rows="5" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold"></textarea>
                             </div>
                             <div>
                                 <button type="submit" class="w-full bg-brand-gold text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-sm">Submit Inquiry</button>
@@ -173,7 +173,49 @@
                 mobileMenuCloseBtn.addEventListener('click', toggleMenu);
                 mobileMenuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
             }
+
+            // --- FORM SUBMISSION LOGIC ---
+            const form = document.getElementById('contact-form');
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                const formData = new FormData(form);
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbyxnh56YKou6WfB9A89-HLjT0-Mt-OYPy7OmZgkSYglwa0JGOiylYcXwq3M6zhx9z2q/exec';
+
+                fetch(scriptURL, { method: 'POST', body: formData })
+                    .then(response => {
+                        console.log('Success!', response);
+                        submitButton.textContent = 'Submitted Successfully!';
+                        submitButton.classList.remove('bg-brand-gold', 'hover:bg-brand-gold-dark');
+                        submitButton.classList.add('bg-green-500');
+                        form.reset();
+                        setTimeout(() => {
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Submit Inquiry';
+                            submitButton.classList.remove('bg-green-500');
+                            submitButton.classList.add('bg-brand-gold', 'hover:bg-brand-gold-dark');
+                        }, 5000);
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        submitButton.textContent = 'Error! Please try again.';
+                        submitButton.classList.remove('bg-brand-gold', 'hover:bg-brand-gold-dark');
+                        submitButton.classList.add('bg-red-500');
+                         setTimeout(() => {
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Submit Inquiry';
+                            submitButton.classList.remove('bg-red-500');
+                            submitButton.classList.add('bg-brand-gold', 'hover:bg-brand-gold-dark');
+                        }, 5000);
+                    });
+            });
         });
     </script>
 </body>
 </html>
+
