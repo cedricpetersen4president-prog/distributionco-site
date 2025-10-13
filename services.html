@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        .service-banner {
+        .hero-section {
             background-color: #0D1B2A; /* brand-blue */
             background-image: radial-gradient(#1E293B 1px, transparent 1px);
             background-size: 20px 20px;
@@ -37,11 +37,9 @@
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <!-- Mobile Logo -->
-                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760367605/TD-Co---Square-Logo_kepioa.png" alt="Thoughtful Distribution Co Logo" class="h-8 w-auto md:hidden">
-                <!-- Desktop Logo -->
-                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760367605/TD-Co---Rectangular-Logo_ejc87l.png" alt="Thoughtful Distribution Co Logo" class="hidden h-8 w-auto md:block">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760367605/TD-Co---Square-Logo_kepioa.png" alt="Thoughtful Distribution Co Logo" class="h-12 w-auto">
+                <span class="font-bold text-lg text-brand-blue whitespace-nowrap">Thoughtful Distribution Co</span>
             </a>
             <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
                 <a href="index.html" class="text-gray-600 hover:text-brand-gold transition-colors">Home</a>
@@ -55,7 +53,7 @@
             </button>
         </nav>
     </header>
-
+    
     <div id="mobile-menu-panel" class="hidden fixed top-0 left-0 w-full h-full bg-white z-50">
         <div class="absolute top-0 right-0 p-4">
              <button id="mobile-menu-close-btn"><i data-lucide="x" class="w-8 h-8 text-brand-blue"></i></button>
@@ -70,73 +68,81 @@
     </div>
 
     <main>
-        <section class="service-banner text-white py-20">
+        <section class="hero-section text-white">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h1 class="text-4xl md:text-5xl font-black leading-tight">Our Distribution Channels</h1>
+                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">We offer a multi-faceted approach to connect your brand with a diverse range of customers.</p>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+
+                <!-- Service 1: E-commerce -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <span class="text-brand-gold font-semibold">Channel One</span>
+                        <h2 class="text-3xl font-bold text-brand-blue mt-2">Direct-to-Consumer (E-commerce)</h2>
+                        <p class="mt-4 text-gray-600">We operate a portfolio of niche e-commerce websites, each tailored to a specific customer segment. By partnering with us, your products gain immediate access to these highly-engaged online communities. We handle the storefront, marketing, and customer service, allowing your brand to tap into new markets effortlessly.</p>
+                        <ul class="mt-6 space-y-3 text-gray-700">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Access to targeted, high-intent shoppers.</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Full management of online sales channels.</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Data-driven insights from niche markets.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760373586/WhatsApp_Image_2025-10-13_at_18.38.11_lrii6v.jpg" alt="E-commerce stores" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    </div>
+                </div>
+
+                <!-- Service 2: Physical Retail -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="md:order-2">
+                        <span class="text-brand-gold font-semibold">Channel Two</span>
+                        <h2 class="text-3xl font-bold text-brand-blue mt-2">Physical & Event Retail</h2>
+                        <p class="mt-4 text-gray-600">We bridge the gap between online and offline. Our team secures placement for your products in brick-and-mortar stores and at high-traffic events and trade shows. This hands-on approach puts your brand directly in front of customers, creating memorable experiences and driving in-person sales.</p>
+                        <ul class="mt-6 space-y-3 text-gray-700">
+                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Placement in relevant retail environments.</li>
+                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Brand presence at key industry events.</li>
+                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Opportunities for product demos and sampling.</li>
+                        </ul>
+                    </div>
+                    <div class="md:order-1">
+                        <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760376077/WhatsApp_Image_2025-10-13_at_19.14.24_meta97.jpg" alt="Physical retail" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    </div>
+                </div>
+                
+                <!-- Service 3: Marketplace Management -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-brand-gold font-semibold">Channel Three</span>
+                        <h2 class="text-3xl font-bold text-brand-blue mt-2">Marketplace Management</h2>
+                        <p class="mt-4 text-gray-600">We are experts in navigating major online marketplaces like Amazon, Walmart, and eBay. Our team manages every aspect of your marketplace presence, from listing optimization and advertising campaigns to inventory management and MAP policy enforcement, ensuring your brand stands out and thrives in a competitive environment.</p>
+                         <ul class="mt-6 space-y-3 text-gray-700">
+                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Expert management for major online marketplaces.</li>
+                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Strategic advertising and promotion.</li>
+                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Strict brand protection and MAP enforcement.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760376076/WhatsApp_Image_2025-10-13_at_19.20.21_h8jata.jpg" alt="Marketplace management" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bg-brand-blue text-white py-20">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-5xl font-black">Our Services</h1>
-                <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">A complete solution for brand growth, from digital storefronts to physical retail.</p>
-            </div>
-        </section>
-
-        <section id="service-dtc" class="py-20 bg-white">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-brand-gold font-semibold">Channel 01</span>
-                    <h2 class="text-3xl font-bold text-brand-blue mt-2">Direct-to-Consumer (E-commerce)</h2>
-                    <p class="text-gray-600 mt-4">Instead of building from scratch, plug your brand into our established ecosystem. We own and operate a portfolio of successful e-commerce stores, each dedicated to a specific niche or product category. We partner with brands like yours to feature and sell your products to a highly-targeted, ready-to-buy audience.</p>
-                    <ul class="mt-6 space-y-3">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Product Curation & Strategic Onboarding</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Targeted Marketing on Our Platforms</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Audience Engagement via Email & SMS</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Full Customer Service & Fulfillment</span></li>
-                    </ul>
-                </div>
-                <div class="bg-gray-100 p-8 rounded-lg">
-                    <img src="https://placehold.co/600x400/0D1B2A/B5A384?text=Our+Niche+Stores" alt="A collection of niche e-commerce stores" class="rounded-lg shadow-xl">
-                </div>
-            </div>
-        </section>
-
-        <section id="service-marketplaces" class="py-20">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                 <div class="bg-gray-100 p-8 rounded-lg md:order-2">
-                    <img src="https://placehold.co/600x400/0D1B2A/FFFFFF?text=Marketplace+Management" alt="Managing brand presence on online marketplaces" class="rounded-lg shadow-xl">
-                </div>
-                <div class="md:order-1">
-                    <span class="text-brand-gold font-semibold">Channel 02</span>
-                    <h2 class="text-3xl font-bold text-brand-blue mt-2">Online Marketplaces</h2>
-                    <p class="text-gray-600 mt-4">Gain access to millions of customers on platforms like Amazon, eBay, and niche marketplaces. We handle everything from listing optimization and advertising to inventory management and MAP policy enforcement, ensuring your brand is presented professionally and profitably.</p>
-                     <ul class="mt-6 space-y-3">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Multi-Platform Strategy & Management</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>PPC & Advertising Campaign Management</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>MAP & Brand Protection Services</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>FBA & 3PL Logistics Coordination</span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="service-retail" class="py-20 bg-white">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-brand-gold font-semibold">Channel 03</span>
-                    <h2 class="text-3xl font-bold text-brand-blue mt-2">Physical & Event Retail</h2>
-                    <p class="text-gray-600 mt-4">Take your brand offline and into the hands of customers. We provide the operational backbone and strategic partnerships to place your products in brick-and-mortar stores, boutique retailers, and at high-impact pop-up shops and events.</p>
-                     <ul class="mt-6 space-y-3">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Retail Partnership Outreach</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Pop-Up & Event Retail Logistics</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>In-Store Merchandising & POS Support</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i><span>Wholesale & Distribution Management</span></li>
-                    </ul>
-                </div>
-                <div class="bg-gray-100 p-8 rounded-lg">
-                    <img src="https://placehold.co/600x400/B5A384/0D1B2A?text=Physical+Retail" alt="Products on a shelf in a physical retail store" class="rounded-lg shadow-xl">
-                </div>
+                 <h2 class="text-3xl font-bold">Ready to Scale Your Brand?</h2>
+                 <p class="mt-4 max-w-2xl mx-auto text-gray-300">Let's build a powerful, multi-channel distribution strategy that drives real growth for your business.</p>
+                 <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Partner With Us</a>
             </div>
         </section>
 
     </main>
     
-    <footer class="bg-brand-blue text-gray-400">
+    <footer class="bg-gray-900 text-gray-400">
         <div class="container mx-auto px-6 py-8 text-center">
             <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
         </div>
@@ -146,23 +152,27 @@
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
 
-            // --- Mobile Menu ---
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn'), 
-                  mobileMenuPanel = document.getElementById('mobile-menu-panel'), 
-                  mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+            const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
 
             if (mobileMenuBtn && mobileMenuPanel) {
-                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon'), 
-                      closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
+                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon');
+                const closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
+                
                 const toggleMenu = () => {
                     mobileMenuPanel.classList.toggle('hidden');
                     openIcon.classList.toggle('hidden');
                     closeIcon.classList.toggle('hidden');
                     document.body.classList.toggle('overflow-hidden');
                 };
+
                 mobileMenuBtn.addEventListener('click', toggleMenu);
                 mobileMenuCloseBtn.addEventListener('click', toggleMenu);
-                mobileMenuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
+                
+                mobileMenuPanel.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
             }
         });
     </script>
