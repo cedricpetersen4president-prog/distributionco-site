@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distribution.Co - Strategic Growth Partners</title>
+    <title>Thoughtful Distribution Co - Your Partner in Retail & E-commerce</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="css/style.css">
     <style>
-        .hero-bg {
+        .hero-section {
             background-color: #0D1B2A; /* brand-blue */
             background-image: radial-gradient(#1E293B 1px, transparent 1px);
             background-size: 20px 20px;
         }
-        #brands-slideshow-container {
-            transition: opacity 0.5s ease-in-out;
+        /* Styles for the logo slideshow */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .logo-slider {
+            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        }
+        .logo-track {
+            animation: scroll 40s linear infinite;
+            width: calc(250px * 10); /* 250px per logo slide * 10 slides (5 original + 5 duplicates) */
+        }
+        .logo-slider:hover .logo-track {
+            animation-play-state: paused;
+        }
+        .logo-slide {
+            width: 250px;
+        }
+        .logo-slide img {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .logo-slider:hover .logo-slide img {
+            filter: grayscale(0%);
+            opacity: 1;
         }
     </style>
     <script>
@@ -31,217 +55,157 @@
                         'brand-blue': '#0D1B2A',
                         'brand-gold': '#B5A384',
                         'brand-gold-dark': '#A18F6D',
-                        'slate': '#374151',
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-gray-50">
+<body class="bg-white">
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 text-2xl font-bold text-brand-blue tracking-wider">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 0L100 25V75L50 100L0 75V25L50 0Z" fill="#0D1B2A"/>
-                    <path d="M50 0L0 25V75L50 100V0Z" fill="#B5A384"/>
-                </svg>
-                <span>Distribution.Co</span>
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760367605/TD-Co---Square-Logo_kepioa.png" alt="Thoughtful Distribution Co Logo" class="h-10 w-auto">
+                <span class="font-bold text-lg text-brand-blue whitespace-nowrap">Thoughtful Distribution Co</span>
             </a>
             <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
                 <a href="index.html" class="text-brand-gold font-bold">Home</a>
                 <a href="services.html" class="text-gray-600 hover:text-brand-gold transition-colors">Services</a>
                 <a href="about.html" class="text-gray-600 hover:text-brand-gold transition-colors">About Us</a>
+                <a href="calculator.html" class="text-gray-600 hover:text-brand-gold transition-colors">Growth Calculator</a>
                 <a href="contact.html" class="bg-brand-gold text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-sm">Partner With Us</a>
             </div>
-             <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="md:hidden z-[60]">
-                <i data-lucide="menu" class="menu-open-icon"></i>
-                <i data-lucide="x" class="menu-close-icon hidden"></i>
+                <i data-lucide="menu" class="menu-open-icon"></i><i data-lucide="x" class="menu-close-icon hidden"></i>
             </button>
         </nav>
     </header>
     
-    <!-- Mobile Menu Panel -->
     <div id="mobile-menu-panel" class="hidden fixed top-0 left-0 w-full h-full bg-white z-50">
         <div class="absolute top-0 right-0 p-4">
-             <button id="mobile-menu-close-btn">
-                <i data-lucide="x" class="w-8 h-8 text-brand-blue"></i>
-            </button>
+             <button id="mobile-menu-close-btn"><i data-lucide="x" class="w-8 h-8 text-brand-blue"></i></button>
         </div>
         <div class="flex flex-col items-center justify-center h-full space-y-8">
             <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Home</a>
             <a href="services.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Services</a>
             <a href="about.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">About Us</a>
+            <a href="calculator.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Growth Calculator</a>
             <a href="contact.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Contact</a>
         </div>
     </div>
 
+
     <main>
-        <!-- Hero Section -->
-        <section class="hero-bg text-white py-20 md:py-32">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight">Your Strategic Growth Partner in Digital Retail.</h1>
-                <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">We leverage data, technology, and deep marketplace expertise to scale your brand and maximize your reach.</p>
-                <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold py-3 px-8 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Schedule a Consultation</a>
-            </div>
-        </section>
-
-        <!-- KPI Banner -->
-        <section class="bg-white py-12 border-b border-gray-200">
-             <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="p-4"><h3 id="kpi-revenue" class="text-4xl font-bold text-brand-gold">$0</h3><p class="mt-2 text-gray-500 font-medium">Annual Partner Revenue</p></div>
-                    <div class="p-4"><h3 id="kpi-growth" class="text-4xl font-bold text-brand-gold">0%</h3><p class="mt-2 text-gray-500 font-medium">Average YoY Growth</p></div>
-                    <div class="p-4"><h3 id="kpi-map" class="text-4xl font-bold text-brand-gold">0%</h3><p class="mt-2 text-gray-500 font-medium">MAP Policy Compliance</p></div>
+        <section class="hero-section text-white">
+            <div class="container mx-auto px-6 py-24 text-center">
+                <h1 class="text-4xl md:text-6xl font-black leading-tight">Your All-in-One Distribution Partner</h1>
+                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">From niche e-commerce to major marketplaces, we connect your brand with customers, wherever they shop.</p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <a href="services.html" class="bg-brand-gold text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Explore Our Services</a>
+                    <a href="contact.html" class="bg-white/10 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/20 transition-colors">Become a Partner</a>
                 </div>
             </div>
         </section>
 
-        <!-- Brands Slideshow -->
-        <section class="py-16">
+        <section class="py-20 bg-white">
             <div class="container mx-auto px-6">
-                 <h2 class="text-3xl font-bold text-center text-brand-blue mb-8">Trusted by Industry-Leading Brands</h2>
-                 <div class="relative w-full bg-white py-8 flex items-center justify-center h-32 overflow-hidden rounded-lg shadow-md border border-gray-200">
-                    <div id="brands-slideshow-container">
-                        <!-- Brand logo injected by JS -->
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-brand-blue">Results You Can Count On</h2>
+                    <p class="mt-4 text-gray-600">We're committed to delivering tangible results that drive your business forward.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+                    <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm">
+                        <h3 class="text-4xl font-black text-brand-gold">$15M+</h3>
+                        <p class="mt-2 text-gray-600 font-semibold">Annual Partner Revenue</p>
+                        <p class="mt-1 text-sm text-gray-500">Generated across our network in the last fiscal year.</p>
+                    </div>
+                    <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm">
+                        <h3 class="text-4xl font-black text-brand-gold">35%</h3>
+                        <p class="mt-2 text-gray-600 font-semibold">Average YoY Growth</p>
+                        <p class="mt-1 text-sm text-gray-500">Experienced by our brand partners after their first year.</p>
+                    </div>
+                    <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm">
+                        <h3 class="text-4xl font-black text-brand-gold">97.7%</h3>
+                        <p class="mt-2 text-gray-600 font-semibold">MAP Policy Compliance</p>
+                        <p class="mt-1 text-sm text-gray-500">Ensuring your brand integrity is protected across all channels.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="py-16 bg-white border-y border-gray-200">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-brand-blue mb-2">Full-Service Distribution</h2>
-                <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">We manage the entire value chain, so you can focus on what you do best: creating great products.</p>
-                <div class="grid md:grid-cols-3 gap-8 text-left">
-                    <div class="bg-gray-50 p-8 rounded-lg border border-gray-200">
-                        <i data-lucide="warehouse" class="w-10 h-10 text-brand-gold mb-4"></i>
-                        <h3 class="font-bold text-xl text-brand-blue">Logistics & Fulfillment</h3>
-                        <p class="text-gray-600 mt-2">State-of-the-art warehousing, inventory management, and multi-channel fulfillment powered by leading networks.</p>
-                    </div>
-                    <div class="bg-gray-50 p-8 rounded-lg border border-gray-200">
-                        <i data-lucide="store" class="w-10 h-10 text-brand-gold mb-4"></i>
-                        <h3 class="font-bold text-xl text-brand-blue">Marketplace Management</h3>
-                        <p class="text-gray-600 mt-2">Expert listing optimization, advertising campaign management (PPC), and brand protection across all major platforms.</p>
-                    </div>
-                    <div class="bg-gray-50 p-8 rounded-lg border border-gray-200">
-                        <i data-lucide="bar-chart-3" class="w-10 h-10 text-brand-gold mb-4"></i>
-                        <h3 class="font-bold text-xl text-brand-blue">Data & Analytics</h3>
-                        <p class="text-gray-600 mt-2">Transparent, data-driven insights. We provide actionable reports to fuel continuous, predictable growth.</p>
-                    </div>
-                </div>
-                 <a href="services.html" class="mt-12 inline-block font-semibold text-brand-gold hover:text-brand-gold-dark">Learn More About Our Services <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
             </div>
         </section>
         
-        <!-- Process Section -->
-        <section class="py-20">
-             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-brand-blue mb-12">Our Partnership Process</h2>
-                <div class="grid md:grid-cols-4 gap-4 text-center relative">
-                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gray-200 -translate-y-1/2 mt-[-40px]"></div>
-                    <div class="hidden md:block absolute top-1/2 left-0 w-full" style="margin-top: -40px;">
-                        <div class="flex justify-around items-center">
-                            <div class="w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></div>
-                            <div class="w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></div>
-                            <div class="w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></div>
-                            <div class="w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></div>
-                        </div>
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-brand-blue">A Distribution Model Built For Growth</h2>
+                    <p class="mt-4 text-gray-600">Stop juggling multiple vendors. We provide a single, streamlined solution to place your products where customers are buying—from niche online stores to major marketplaces and physical retail.</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-3 gap-10">
+                    <div class="text-center p-8 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="inline-block bg-brand-gold/10 text-brand-gold p-4 rounded-full"><i data-lucide="store" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-brand-blue mt-4">Our Niche E-commerce Stores</h3>
+                        <p class="mt-2 text-gray-600">We own and operate a portfolio of successful e-commerce sites, giving your products direct access to passionate, targeted audiences.</p>
                     </div>
-                    <div class="relative bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold mx-auto mb-4"><h3 class="font-bold text-2xl">1</h3></div>
-                        <h3 class="font-semibold text-brand-blue">Onboarding & Strategy</h3>
+                    <div class="text-center p-8 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="inline-block bg-brand-gold/10 text-brand-gold p-4 rounded-full"><i data-lucide="shopping-cart" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-brand-blue mt-4">Marketplace Management</h3>
+                        <p class="mt-2 text-gray-600">From Amazon to niche marketplaces, we manage your listings, advertising, and fulfillment to maximize sales and visibility.</p>
                     </div>
-                    <div class="relative bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold mx-auto mb-4"><h3 class="font-bold text-2xl">2</h3></div>
-                        <h3 class="font-semibold text-brand-blue">Integration & Logistics</h3>
-                    </div>
-                    <div class="relative bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold mx-auto mb-4"><h3 class="font-bold text-2xl">3</h3></div>
-                        <h3 class="font-semibold text-brand-blue">Marketplace Launch</h3>
-                    </div>
-                    <div class="relative bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold mx-auto mb-4"><h3 class="font-bold text-2xl">4</h3></div>
-                        <h3 class="font-semibold text-brand-blue">Scale & Grow</h3>
+                    <div class="text-center p-8 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="inline-block bg-brand-gold/10 text-brand-gold p-4 rounded-full"><i data-lucide="building" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-brand-blue mt-4">Physical & Event Retail</h3>
+                        <p class="mt-2 text-gray-600">We secure placement in brick-and-mortar stores and at key industry events, putting your products directly into customers' hands.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact / CTA Section -->
-        <section class="bg-white py-20 border-y border-gray-200">
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-center text-lg font-semibold text-gray-500 mb-8">Trusted by a growing number of forward-thinking brands</h2>
+                <div class="logo-slider relative w-full overflow-hidden">
+                    <div class="logo-track flex items-center">
+                        <!-- Original Logos --><div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+A" alt="Brand Logo A" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+B" alt="Brand Logo B" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+C" alt="Brand Logo C" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+D" alt="Brand Logo D" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+E" alt="Brand Logo E" class="h-16 w-auto"></div>
+                        <!-- Duplicated Logos for seamless loop --><div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+A" alt="Brand Logo A" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+B" alt="Brand Logo B" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+C" alt="Brand Logo C" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+D" alt="Brand Logo D" class="h-16 w-auto"></div>
+                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+E" alt="Brand Logo E" class="h-16 w-auto"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-brand-blue text-white py-20">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-brand-blue">Ready to Scale Your Brand?</h2>
-                <p class="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">Let's discuss your goals. Schedule a free, no-obligation consultation with our partnership team today.</p>
-                <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold py-3 px-8 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Schedule Your Free Consultation</a>
+                 <h2 class="text-3xl font-bold">Ready to Scale Your Brand?</h2>
+                 <p class="mt-4 max-w-2xl mx-auto text-gray-300">Let's build a powerful, multi-channel distribution strategy that drives real growth for your business.</p>
+                 <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Partner With Us</a>
             </div>
         </section>
     </main>
-
-    <footer class="bg-brand-blue text-gray-400">
+    
+    <footer class="bg-gray-900 text-gray-400">
         <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Distribution.Co. All Rights Reserved.</p>
+            <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             
-            const kpiData = { revenue: 125000000, growth: 35, map: 100 };
-            const brandsData = [
-                { name: 'BrandA', logo: 'https://placehold.co/150x60/e5e7eb/4b5563?text=BrandA' },
-                { name: 'BrandB', logo: 'https://placehold.co/150x60/e5e7eb/4b5563?text=BrandB' },
-                { name: 'BrandC', logo: 'https://placehold.co/150x60/e5e7eb/4b5563?text=BrandC' },
-                { name: 'BrandD', logo: 'https://placehold.co/150x60/e5e7eb/4b5563?text=BrandD' },
-                { name: 'BrandE', logo: 'https://placehold.co/150x60/e5e7eb/4b5563?text=BrandE' },
-                { name: 'BrandF', logo: 'https://placehold.co/150x60/e5e7eb/4b5563?text=BrandF' },
-            ];
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn'), 
+                  mobileMenuPanel = document.getElementById('mobile-menu-panel'), 
+                  mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
 
-            function animateCounter(id, finalValue, duration, isCurrency = false) {
-                const element = document.getElementById(id);
-                if (!element) return;
-                let start = 0;
-                const stepTime = 16;
-                const steps = duration / stepTime;
-                const increment = finalValue / steps;
-                const timer = setInterval(() => {
-                    start += increment;
-                    if (start >= finalValue) { start = finalValue; clearInterval(timer); }
-                    let text = isCurrency ? '$' + Math.floor(start / 1000000) + 'M+' : Math.floor(start) + '%';
-                    if (id === 'kpi-map') text = Math.floor(start) + '%';
-                    element.textContent = text;
-                }, stepTime);
-            }
-            
-            function initBrandSlideshow(brands) {
-                const container = document.getElementById('brands-slideshow-container');
-                if (!container || brands.length === 0) return;
-                let currentIndex = 0;
-                const showNextBrand = () => {
-                    container.style.opacity = 0;
-                    setTimeout(() => {
-                        currentIndex = (currentIndex + 1) % brands.length;
-                        const brand = brands[currentIndex];
-                        container.innerHTML = `<img src="${brand.logo}" alt="${brand.name}" class="max-h-12 mx-auto">`;
-                        container.style.opacity = 1;
-                    }, 500);
-                };
-                const firstBrand = brands[currentIndex];
-                container.innerHTML = `<img src="${firstBrand.logo}" alt="${firstBrand.name}" class="max-h-12 mx-auto">`;
-                container.style.opacity = 1;
-                setInterval(showNextBrand, 3000);
-            }
-
-            // Mobile Menu Logic
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-            const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
             if (mobileMenuBtn && mobileMenuPanel) {
-                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon');
-                const closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
+                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon'), 
+                      closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
                 const toggleMenu = () => {
                     mobileMenuPanel.classList.toggle('hidden');
                     openIcon.classList.toggle('hidden');
@@ -252,14 +216,8 @@
                 mobileMenuCloseBtn.addEventListener('click', toggleMenu);
                 mobileMenuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
             }
-
-            animateCounter('kpi-revenue', kpiData.revenue, 1500, true);
-            animateCounter('kpi-growth', kpiData.growth, 1500);
-            animateCounter('kpi-map', kpiData.map, 1500);
-            initBrandSlideshow(brandsData);
         });
     </script>
 </body>
 </html>
-
 
