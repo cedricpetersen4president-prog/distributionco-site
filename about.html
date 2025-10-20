@@ -3,59 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Thoughtful Distribution Co</title>
+    <title>About Us - Thoughtful Distribution Co.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
     <style>
+        .nav-link.active { color: #B5A384; font-weight: 700; }
         .page-header {
             background-color: #0D1B2A; /* brand-blue */
             background-image: radial-gradient(#1E293B 1px, transparent 1px);
             background-size: 20px 20px;
         }
-        /* Styles for the logo slideshow */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        /* Styles for the scroll animation */
+        .belief-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .logo-slider {
-            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-        }
-        .logo-track {
-            animation: scroll 40s linear infinite;
-            width: calc(250px * 10); /* 250px per logo slide * 10 slides (5 original + 5 duplicates) */
-        }
-        .logo-slider:hover .logo-track {
-            animation-play-state: paused;
-        }
-        .logo-slide {
-            width: 250px;
-        }
-        .logo-slide img {
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-        .logo-slider:hover .logo-slide img {
-            filter: grayscale(0%);
+        .belief-card.is-visible {
             opacity: 1;
+            transform: translateY(0);
         }
     </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-blue': '#0D1B2A',
-                        'brand-gold': '#B5A384',
-                        'brand-gold-dark': '#A18F6D',
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { 'brand-blue': '#0D1B2A', 'brand-gold': '#B5A384', 'brand-gold-dark': '#A18F6D' }
                 }
             }
         }
@@ -63,169 +41,183 @@
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760367605/TD-Co---Square-Logo_kepioa.png" alt="Thoughtful Distribution Co Logo" class="h-10 w-auto">
-                <span class="font-bold text-lg text-brand-blue whitespace-nowrap">Thoughtful Distribution Co</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="index.html" class="text-gray-600 hover:text-brand-gold transition-colors">Home</a>
-                <a href="services.html" class="text-gray-600 hover:text-brand-gold transition-colors">Services</a>
-                <a href="about.html" class="text-brand-gold font-bold">About Us</a>
-                <a href="calculator.html" class="text-gray-600 hover:text-brand-gold transition-colors">Growth Calculator</a>
-                <a href="contact.html" class="text-gray-600 hover:text-brand-gold transition-colors">Contact</a>
-            </div>
-            <button id="mobile-menu-btn" class="md:hidden z-[60]">
-                <i data-lucide="menu" class="menu-open-icon"></i><i data-lucide="x" class="menu-close-icon hidden"></i>
-            </button>
-        </nav>
-    </header>
-    
-    <div id="mobile-menu-panel" class="hidden fixed top-0 left-0 w-full h-full bg-white z-50">
-        <div class="absolute top-0 right-0 p-4">
-             <button id="mobile-menu-close-btn"><i data-lucide="x" class="w-8 h-8 text-brand-blue"></i></button>
-        </div>
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Home</a>
-            <a href="services.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Services</a>
-            <a href="about.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">About Us</a>
-            <a href="calculator.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Growth Calculator</a>
-            <a href="contact.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Contact</a>
-        </div>
+<!-- Loading Screen -->
+<div id="loading-screen" class="fixed inset-0 bg-gray-50 z-[100] flex items-center justify-center transition-opacity duration-500 ease-in-out">
+    <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760650198/TD_Co_-_logo_and_color_codes.pdf_qazw7k.png" alt="Thoughtful Distribution Co Logo" class="h-20 w-auto animate-pulse">
+</div>
+
+<header class="bg-white shadow-md sticky top-0 z-40">
+  <nav class="container mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4">
+    <a href="index.html" class="flex items-center flex-shrink-0 space-x-3">
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760650198/TD_Co_-_logo_and_color_codes.pdf_qazw7k.png" alt="Thoughtful Distribution Co Logo" class="h-14 w-auto">
+      <span class="text-lg font-semibold text-gray-800 whitespace-nowrap">Thoughtful Distribution Co.</span>
+    </a>
+    <div class="hidden md:flex flex-wrap items-center justify-end space-x-6">
+      <a href="index.html" class="nav-link" data-page="index">Home</a>
+      <a href="about.html" class="nav-link" data-page="about">About Us</a>
+      <a href="services.html" class="nav-link" data-page="services">Services</a>
+      <a href="calculator.html" class="nav-link" data-page="growth">Growth Calculator</a>
+      <a href="contact.html" class="bg-brand-gold text-white px-5 py-2 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
     </div>
+    <button id="mobile-menu-button" class="md:hidden"><i data-lucide="menu" class="text-brand-gold h-7 w-7"></i></button>
+  </nav>
+</header>
 
-    <main>
-        <section class="page-header text-white">
-            <div class="container mx-auto px-6 py-20 text-center">
-                <h1 class="text-4xl md:text-5xl font-black">About Thoughtful Distribution Co</h1>
-                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-300">We're more than a distributor; we're a strategic partner dedicated to your brand's growth.</p>
-            </div>
-        </section>
+<div id="mobile-menu" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out transform translate-x-full">
+  <button id="close-menu-button" class="absolute top-6 right-6"><i data-lucide="x" class="text-brand-gold h-8 w-8"></i></button>
+  <div class="flex flex-col text-center space-y-6">
+    <a href="index.html" class="text-2xl font-semibold nav-link" data-page="index">Home</a>
+    <a href="about.html" class="text-2xl font-semibold nav-link" data-page="about">About Us</a>
+    <a href="services.html" class="text-2xl font-semibold nav-link" data-page="services">Services</a>
+    <a href="calculator.html" class="text-2xl font-semibold nav-link" data-page="growth">Growth Calculator</a>
+    <a href="contact.html" class="mt-8 block bg-brand-gold text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
+  </div>
+</div>
 
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl font-bold text-brand-blue">Our Story</h2>
-                        <p class="mt-4 text-gray-600">Founded on the principle that modern brands need modern solutions, Thoughtful Distribution Co was created to bridge the gap between great products and their potential customers. We saw too many innovative companies struggle with the complexities of multi-channel sales, and we knew there was a better way.</p>
-                        <p class="mt-4 text-gray-600">Our model is simple: we handle the distribution so you can focus on what you do best—creating amazing products. By building a network of our own niche e-commerce stores and mastering the art of marketplace and retail placement, we've created a powerful, unified platform for brand growth.</p>
-                    </div>
-                    <div class="order-first md:order-last">
-                        <img src="https://placehold.co/600x400/0D1B2A/B5A384?text=Our+Journey" alt="Company Story Image" class="rounded-lg shadow-xl">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-white py-20">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl font-bold text-brand-blue">What We Believe In</h2>
-                </div>
-                <div class="mt-12 grid md:grid-cols-3 gap-10">
-                    <div class="text-center">
-                        <div class="inline-block bg-brand-gold/10 text-brand-gold p-4 rounded-full"><i data-lucide="handshake" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-bold text-brand-blue mt-4">Partnership Over Process</h3>
-                        <p class="mt-2 text-gray-600">We treat your brand as our own. Your success is our success, and we build lasting relationships based on trust and mutual growth.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="inline-block bg-brand-gold/10 text-brand-gold p-4 rounded-full"><i data-lucide="target" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-bold text-brand-blue mt-4">Data-Driven Strategy</h3>
-                        <p class="mt-2 text-gray-600">Every decision we make is backed by data. We constantly analyze market trends to ensure your products are positioned for maximum impact.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="inline-block bg-brand-gold/10 text-brand-gold p-4 rounded-full"><i data-lucide="sparkles" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-bold text-brand-blue mt-4">Thoughtful Curation</h3>
-                        <p class="mt-2 text-gray-600">We carefully select our partners and our channels, ensuring a high-quality ecosystem that benefits everyone involved.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl font-bold text-brand-blue">Meet Our Directors</h2>
-                    <p class="mt-4 text-gray-600">The driving force behind our innovative approach to distribution.</p>
-                </div>
-                <div class="mt-12 grid sm:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-                        <img src="https://placehold.co/200x200/CCCCCC/FFFFFF?text=Photo" alt="Katie Whalen" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-gold">
-                        <h3 class="text-2xl font-bold text-brand-blue">Katie Whalen</h3>
-                        <p class="text-brand-gold font-semibold">Co-Founder & Director</p>
-                        <p class="mt-4 text-gray-600">"We're passionate about finding those hidden gems and giving them the platform they deserve to shine."</p>
-                    </div>
-                     <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-                        <img src="https://placehold.co/200x200/CCCCCC/FFFFFF?text=Photo" alt="Damien THAREAU" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-gold">
-                        <h3 class="text-2xl font-bold text-brand-blue">Damien THAREAU</h3>
-                        <p class="text-brand-gold font-semibold">Co-Founder & Director</p>
-                        <p class="mt-4 text-gray-600">"Our goal is to build an ecosystem where great products and eager customers can find each other effortlessly."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-center text-lg font-semibold text-gray-500 mb-8">Trusted by a growing number of forward-thinking brands</h2>
-                <div class="logo-slider relative w-full overflow-hidden">
-                    <div class="logo-track flex items-center">
-                        <!-- Original Logos -->
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+A" alt="Brand Logo A" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+B" alt="Brand Logo B" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+C" alt="Brand Logo C" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+D" alt="Brand Logo D" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+E" alt="Brand Logo E" class="h-16 w-auto"></div>
-                        <!-- Duplicated Logos for seamless loop -->
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+A" alt="Brand Logo A" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+B" alt="Brand Logo B" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+C" alt="Brand Logo C" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+D" alt="Brand Logo D" class="h-16 w-auto"></div>
-                        <div class="logo-slide flex justify-center items-center"><img src="https://placehold.co/200x80/CCCCCC/FFFFFF?text=Brand+E" alt="Brand Logo E" class="h-16 w-auto"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="bg-brand-blue text-white py-20">
-            <div class="container mx-auto px-6 text-center">
-                 <h2 class="text-3xl font-bold">Ready to Join Us?</h2>
-                 <p class="mt-4 max-w-2xl mx-auto text-gray-300">Let's build a powerful, multi-channel distribution strategy that drives real growth for your business.</p>
-                 <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Partner With Us</a>
-            </div>
-        </section>
-
-    </main>
-    
-    <footer class="bg-gray-900 text-gray-400">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
+<main>
+    <section class="page-header text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h1 class="text-4xl md:text-5xl font-black">We are Architects of Digital Growth.</h1>
+            <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-300">Our mission is to empower innovative brands to achieve their full potential by building sustainable, multi-channel retail strategies.</p>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn'), 
-                  mobileMenuPanel = document.getElementById('mobile-menu-panel'), 
-                  mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
+    <section class="py-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760998668/Untitled_design_6_p3xhue.jpg" alt="Our Journey" class="rounded-md object-cover w-full">
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold text-brand-blue">Our Journey</h2>
+                <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                    Founded on the principle that modern brands need modern solutions, Thoughtful Distribution Co. was created to help great, established brands thrive in the complex world of modern retail.
+                    <br><br>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-20 bg-white border-y border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-brand-blue">What We Believe In</h2>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+                <div class="text-center belief-card">
+                    <div class="inline-block p-4"><i data-lucide="shield-check" class="w-8 h-8 text-brand-gold"></i></div>
+                    <h3 class="text-xl font-bold text-brand-blue mt-2">INTEGRITY OVER VOLUME</h3>
+                    <p class="mt-2 text-gray-600 text-sm">We choose long-term brand alignment over short-term sales. We honor MAP policies, protect your reputation, and never compete against our partners.</p>
+                </div>
+                <div class="text-center belief-card">
+                    <div class="inline-block p-4"><i data-lucide="trending-up" class="w-8 h-8 text-brand-gold"></i></div>
+                    <h3 class="text-xl font-bold text-brand-blue mt-2">THOUGHTFUL GROWTH</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Every strategy we implement is tailored, not templated. We prioritize intentional expansion that supports sustainable success for your brand.</p>
+                </div>
+                <div class="text-center belief-card">
+                    <div class="inline-block p-4"><i data-lucide="eye" class="w-8 h-8 text-brand-gold"></i></div>
+                    <h3 class="text-xl font-bold text-brand-blue mt-2">TRANSPARENCY ALWAYS</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Clear communication, honest reporting, and shared insights guide every stage of our partnership. No surprises. No hidden agendas.</p>
+                </div>
+                <div class="text-center belief-card">
+                    <div class="inline-block p-4"><i data-lucide="handshake" class="w-8 h-8 text-brand-gold"></i></div>
+                    <h3 class="text-xl font-bold text-brand-blue mt-2">PARTNERSHIP-FIRST MINDSET</h3>
+                    <p class="mt-2 text-gray-600 text-sm">We don't just distribute your products, we champion your brand. Our team works alongside you to build trust, amplify reach, and achieve shared goals.</p>
+                </div>
+                 <div class="text-center belief-card">
+                    <div class="inline-block p-4"><i data-lucide="graduation-cap" class="w-8 h-8 text-brand-gold"></i></div>
+                    <h3 class="text-xl font-bold text-brand-blue mt-2">EXPERT EDUCATION</h3>
+                    <p class="mt-2 text-gray-600 text-sm">With years of hands-on marketplace experience, we combine strategic thinking with operational excellence, from listing optimization to fulfillment logistics.</p>
+                </div>
+                 <div class="text-center belief-card">
+                    <div class="inline-block p-4"><i data-lucide="git-branch" class="w-8 h-8 text-brand-gold"></i></div>
+                    <h3 class="text-xl font-bold text-brand-blue mt-2">MULTI-CHANNEL AGILITY</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Whether it's ThoughtfulShop.com, TikTok Shop, markets, or major marketplaces, we meet your customers where they are, and deliver consistent brand experiences across every touchpoint.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            if (mobileMenuBtn && mobileMenuPanel) {
-                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon'), 
-                      closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
-                const toggleMenu = () => {
-                    mobileMenuPanel.classList.toggle('hidden');
-                    openIcon.classList.toggle('hidden');
-                    closeIcon.classList.toggle('hidden');
-                    document.body.classList.toggle('overflow-hidden');
-                };
-                mobileMenuBtn.addEventListener('click', toggleMenu);
-                mobileMenuCloseBtn.addEventListener('click', toggleMenu);
-                mobileMenuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
-            }
-        });
-    </script>
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+             <h2 class="text-3xl font-bold text-center text-brand-blue mb-12">Meet the Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 rounded-lg border border-gray-200 text-center shadow-md">
+                    <img class="w-32 h-32 rounded-full mx-auto shadow-md object-cover" src="https://placehold.co/200x200/EADFD0/0D1B2A?text=KW" alt="Katie Whalen">
+                    <h3 class="font-bold text-xl text-brand-blue mt-4">Katie Whalen</h3>
+                    <p class="text-brand-gold font-semibold">Co-Founder & CEO</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg border border-gray-200 text-center shadow-md">
+                    <img class="w-32 h-32 rounded-full mx-auto shadow-md object-cover" src="https://placehold.co/200x200/EADFD0/0D1B2A?text=D" alt="Damien">
+                    <h3 class="font-bold text-xl text-brand-blue mt-4">Damien</h3>
+                    <p class="text-brand-gold font-semibold">Co-Founder & COO</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg border border-gray-200 text-center shadow-md">
+                    <img class="w-32 h-32 rounded-full mx-auto shadow-md object-cover" src="https://placehold.co/200x200/EADFD0/0D1B2A?text=CG" alt="Christelle Gonzales">
+                    <h3 class="font-bold text-xl text-brand-blue mt-4">Christelle Gonzales</h3>
+                    <p class="text-brand-gold font-semibold">Purchasing Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand-blue text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold">Ready to Start the Conversation?</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-gray-300">We're here to answer your questions and build a strategy for your brand's growth.</p>
+            <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold py-3 px-8 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Partner With Us</a>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-dark-footer text-gray-400">
+    <div class="container mx-auto px-6 py-8 text-center">
+        <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
+        // Mobile Menu Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button'), closeMenuButton = document.getElementById('close-menu-button'), mobileMenu = document.getElementById('mobile-menu');
+        const openMenu = () => { mobileMenu.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; };
+        const closeMenu = () => { mobileMenu.classList.add('translate-x-full'); document.body.style.overflow = ''; };
+        mobileMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop().split('.')[0] || 'index';
+        navLinks.forEach(link => { if (link.dataset.page === currentPage) { link.classList.add('active'); } });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add a delay based on the item's index to stagger the animation
+                    entry.target.style.transitionDelay = `${index * 100}ms`;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const beliefCards = document.querySelectorAll('.belief-card');
+        beliefCards.forEach(card => observer.observe(card));
+
+        // Loading Screen Logic
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            setTimeout(() => {
+                loadingScreen.classList.add('opacity-0');
+                // After the fade-out animation, hide the element completely
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500); // This should match the CSS transition duration
+            }, 4000); // 4 seconds
+        }
+    });
+</script>
+
 </body>
 </html>
+
