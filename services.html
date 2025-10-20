@@ -3,31 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Thoughtful Distribution Co</title>
+    <title>Services - Thoughtful Distribution Co.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .hero-section {
-            background-color: #0D1B2A; /* brand-blue */
-            background-image: radial-gradient(#1E293B 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <style>.nav-link.active { color: #B5A384; font-weight: 700; }</style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-blue': '#0D1B2A',
-                        'brand-gold': '#B5A384',
-                        'brand-gold-dark': '#A18F6D',
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { 'brand-blue': '#0D1B2A', 'brand-gold': '#B5A384', 'brand-gold-dark': '#A18F6D' }
                 }
             }
         }
@@ -35,146 +24,134 @@
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760367605/TD-Co---Square-Logo_kepioa.png" alt="Thoughtful Distribution Co Logo" class="h-12 w-auto">
-                <span class="font-bold text-lg text-brand-blue whitespace-nowrap">Thoughtful Distribution Co</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="index.html" class="text-gray-600 hover:text-brand-gold transition-colors">Home</a>
-                <a href="services.html" class="text-brand-gold font-bold">Services</a>
-                <a href="about.html" class="text-gray-600 hover:text-brand-gold transition-colors">About Us</a>
-                <a href="calculator.html" class="text-gray-600 hover:text-brand-gold transition-colors">Growth Calculator</a>
-                <a href="contact.html" class="bg-brand-gold text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-sm">Partner With Us</a>
-            </div>
-            <button id="mobile-menu-btn" class="md:hidden z-[60]">
-                <i data-lucide="menu" class="menu-open-icon"></i><i data-lucide="x" class="menu-close-icon hidden"></i>
-            </button>
-        </nav>
-    </header>
-    
-    <div id="mobile-menu-panel" class="hidden fixed top-0 left-0 w-full h-full bg-white z-50">
-        <div class="absolute top-0 right-0 p-4">
-             <button id="mobile-menu-close-btn"><i data-lucide="x" class="w-8 h-8 text-brand-blue"></i></button>
-        </div>
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Home</a>
-            <a href="services.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Services</a>
-            <a href="about.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">About Us</a>
-            <a href="calculator.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Growth Calculator</a>
-            <a href="contact.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Contact</a>
-        </div>
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4">
+    <a href="index.html" class="flex items-center flex-shrink-0 space-x-3">
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760650198/TD_Co_-_logo_and_color_codes.pdf_qazw7k.png" alt="Thoughtful Distribution Co Logo" class="h-14 w-auto">
+      <span class="text-lg font-semibold text-gray-800 whitespace-nowrap">Thoughtful Distribution Co.</span>
+    </a>
+    <div class="hidden md:flex flex-wrap items-center justify-end space-x-6">
+      <a href="index.html" class="nav-link" data-page="index">Home</a>
+      <a href="about.html" class="nav-link" data-page="about">About Us</a>
+      <a href="services.html" class="nav-link" data-page="services">Services</a>
+      <a href="calculator.html" class="nav-link" data-page="growth">Growth Calculator</a>
+      <a href="contact.html" class="bg-brand-gold text-white px-5 py-2 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
     </div>
+    <button id="mobile-menu-button" class="md:hidden"><i data-lucide="menu" class="text-brand-gold h-7 w-7"></i></button>
+  </nav>
+</header>
 
-    <main>
-        <section class="hero-section text-white">
-            <div class="container mx-auto px-6 py-20 text-center">
-                <h1 class="text-4xl md:text-5xl font-black leading-tight">Our Distribution Channels</h1>
-                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">We offer a multi-faceted approach to connect your brand with a diverse range of customers.</p>
-            </div>
-        </section>
+<div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center transition-transform duration-300 ease-in-out transform translate-x-full">
+  <button id="close-menu-button" class="absolute top-6 right-6"><i data-lucide="x" class="text-brand-gold h-8 w-8"></i></button>
+  <div class="flex flex-col text-center space-y-6">
+    <a href="index.html" class="text-2xl font-semibold nav-link" data-page="index">Home</a>
+    <a href="about.html" class="text-2xl font-semibold nav-link" data-page="about">About Us</a>
+    <a href="services.html" class="text-2xl font-semibold nav-link" data-page="services">Services</a>
+    <a href="calculator.html" class="text-2xl font-semibold nav-link" data-page="growth">Growth Calculator</a>
+    <a href="contact.html" class="mt-8 block bg-brand-gold text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
+  </div>
+</div>
 
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-
-                <!-- Service 1: E-commerce -->
-                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-                    <div>
-                        <span class="text-brand-gold font-semibold">Channel One</span>
-                        <h2 class="text-3xl font-bold text-brand-blue mt-2">Direct-to-Consumer (E-commerce)</h2>
-                        <p class="mt-4 text-gray-600">We operate a portfolio of niche e-commerce websites, each tailored to a specific customer segment. By partnering with us, your products gain immediate access to these highly-engaged online communities. We handle the storefront, marketing, and customer service, allowing your brand to tap into new markets effortlessly.</p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Access to targeted, high-intent shoppers.</li>
-                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Full management of online sales channels.</li>
-                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Data-driven insights from niche markets.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760373586/WhatsApp_Image_2025-10-13_at_18.38.11_lrii6v.jpg" alt="E-commerce stores" class="rounded-lg shadow-xl w-full h-auto object-cover">
-                    </div>
-                </div>
-
-                <!-- Service 2: Physical Retail -->
-                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-                    <div class="md:order-2">
-                        <span class="text-brand-gold font-semibold">Channel Two</span>
-                        <h2 class="text-3xl font-bold text-brand-blue mt-2">Physical & Event Retail</h2>
-                        <p class="mt-4 text-gray-600">We bridge the gap between online and offline. Our team secures placement for your products in brick-and-mortar stores and at high-traffic events and trade shows. This hands-on approach puts your brand directly in front of customers, creating memorable experiences and driving in-person sales.</p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Placement in relevant retail environments.</li>
-                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Brand presence at key industry events.</li>
-                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Opportunities for product demos and sampling.</li>
-                        </ul>
-                    </div>
-                    <div class="md:order-1">
-                        <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760376077/WhatsApp_Image_2025-10-13_at_19.14.24_meta97.jpg" alt="Physical retail" class="rounded-lg shadow-xl w-full h-auto object-cover">
-                    </div>
-                </div>
-                
-                <!-- Service 3: Marketplace Management -->
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <span class="text-brand-gold font-semibold">Channel Three</span>
-                        <h2 class="text-3xl font-bold text-brand-blue mt-2">Marketplace Management</h2>
-                        <p class="mt-4 text-gray-600">We are experts in navigating major online marketplaces like Amazon, Walmart, and eBay. Our team manages every aspect of your marketplace presence, from listing optimization and advertising campaigns to inventory management and MAP policy enforcement, ensuring your brand stands out and thrives in a competitive environment.</p>
-                         <ul class="mt-6 space-y-3 text-gray-700">
-                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Expert management for major online marketplaces.</li>
-                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Strategic advertising and promotion.</li>
-                           <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>Strict brand protection and MAP enforcement.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760376076/WhatsApp_Image_2025-10-13_at_19.20.21_h8jata.jpg" alt="Marketplace management" class="rounded-lg shadow-xl w-full h-auto object-cover">
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="bg-brand-blue text-white py-20">
-            <div class="container mx-auto px-6 text-center">
-                 <h2 class="text-3xl font-bold">Ready to Scale Your Brand?</h2>
-                 <p class="mt-4 max-w-2xl mx-auto text-gray-300">Let's build a powerful, multi-channel distribution strategy that drives real growth for your business.</p>
-                 <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold px-8 py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Partner With Us</a>
-            </div>
-        </section>
-
-    </main>
-    
-    <footer class="bg-gray-900 text-gray-400">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
+<main>
+    <section class="bg-white py-20 border-b border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-black text-brand-blue tracking-tight">Our Multi-Channel Expertise</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">We provide end-to-end management for every channel, ensuring your brand presents a unified, premium experience everywhere you sell.</p>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
+    <section class="py-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <i data-lucide="monitor-smartphone" class="w-16 h-16 text-brand-gold mb-4"></i>
+                <h2 class="text-3xl font-bold text-brand-blue">Direct-to-Consumer (E-commerce)</h2>
+                <p class="mt-4 text-lg text-gray-600">We build and manage your most important sales channel: your own website. This is the heart of your brand, and we treat it as such, focusing on creating a seamless customer experience that maximizes conversion and loyalty.</p>
+                <ul class="mt-6 space-y-3 text-gray-700">
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i><span>Shopify & BigCommerce Development</span></li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i><span>Conversion Rate Optimization (CRO)</span></li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i><span>Centralized Fulfillment Integration (MCF)</span></li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200"><img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760373586/WhatsApp_Image_2025-10-13_at_18.38.11_lrii6v.jpg" alt="Direct to Consumer E-commerce" class="rounded-md object-cover"></div>
+        </div>
+    </section>
+    
+    <section class="py-20 bg-white border-y border-gray-200">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="md:order-last">
+                <i data-lucide="store" class="w-16 h-16 text-brand-gold mb-4"></i>
+                <h2 class="text-3xl font-bold text-brand-blue">Marketplace Management</h2>
+                <p class="mt-4 text-lg text-gray-600">Beyond your own site, curated marketplaces are essential for customer acquisition. We manage your brand's presence across platforms like Walmart, eBay, and specialty retailers, ensuring consistency and growth.</p>
+                 <ul class="mt-6 space-y-3 text-gray-700">
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>MAP enforcement to prevent race-to-the-bottom discounting</span></li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>Channel monitoring that reduces unauthorized and gray-market exposure</span></li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>Strategic advertising and promotion</span></li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>Transparent reporting on sales velocity, pricing, and channel activity</span></li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200"><img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/WhatsApp_Image_2025-10-13_at_19.20.21_h8jata.jpg" alt="Marketplace Management" class="rounded-md object-cover"></div>
+        </div>
+    </section>
 
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-            const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
+     <section class="py-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <i data-lucide="map-pin" class="w-16 h-16 text-brand-gold mb-4"></i>
+                <h2 class="text-3xl font-bold text-brand-blue">Physical & Event Retail</h2>
+                <p class="mt-4 text-lg text-gray-600">We secure placement at key industry events, putting your products directly into customers' hands. This builds invaluable brand equity and opens doors to new wholesale opportunities.</p>
+                <ul class="mt-6 space-y-3 text-gray-700">
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i><span>Trade Show & Expo Logistics</span></li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3"></i><span>On-Site Inventory & Sales Management</span></li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200"><img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760376077/WhatsApp_Image_2025-10-13_at_19.14.24_meta97.jpg" alt="Events" class="rounded-md object-cover"></div>
+        </div>
+    </section>
 
-            if (mobileMenuBtn && mobileMenuPanel) {
-                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon');
-                const closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
-                
-                const toggleMenu = () => {
-                    mobileMenuPanel.classList.toggle('hidden');
-                    openIcon.classList.toggle('hidden');
-                    closeIcon.classList.toggle('hidden');
-                    document.body.classList.toggle('overflow-hidden');
-                };
+    <section class="py-20 bg-white border-y border-gray-200">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="md:order-last">
+                <i data-lucide="handshake" class="w-16 h-16 text-brand-gold mb-4"></i>
+                <h2 class="text-3xl font-bold text-brand-blue">Wholesale Distribution</h2>
+                <p class="mt-4 text-lg text-gray-600">Wholesale distribution with Thoughtful Distribution Co. is built on reliability and trust. We focus on consistent ordering and brand-first practices that support long-term growth. We go beyond transactions, we treat distribution as partnership.</p>
+                 <ul class="mt-6 space-y-3 text-gray-700">
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>Inventory planning to prevent overstocking or stockouts</span></li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>Transparent communication so you always know where inventory stands</span></li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>Brand protection practices that preserve pricing and reputation</span></li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-5 h-5 text-green-500 mr-3 mt-1"></i><span>Extension of your team - we handle logistics so you can focus on building your brand</span></li>
+                </ul>
+            </div>
+             <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200"><img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760998205/Untitled_design_5_gvc1lc.jpg" alt="Wholesale Distribution" class="rounded-md object-cover"></div>
+        </div>
+    </section>
 
-                mobileMenuBtn.addEventListener('click', toggleMenu);
-                mobileMenuCloseBtn.addEventListener('click', toggleMenu);
-                
-                mobileMenuPanel.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', toggleMenu);
-                });
-            }
-        });
-    </script>
+    <section class="bg-brand-blue text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h2 class="text-3xl font-bold">Ready to Diversify Your Revenue?</h2>
+            <p class="mt-3 text-lg text-gray-300 max-w-2xl mx-auto">Our multi-channel approach is designed to build a resilient, profitable brand. Let's create your holistic growth strategy together.</p>
+            <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold py-3 px-8 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Contact Our Partnership Team</a>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-brand-blue text-gray-400">
+    <div class="container mx-auto px-6 py-8 text-center">
+        <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
+        const mobileMenuButton = document.getElementById('mobile-menu-button'), closeMenuButton = document.getElementById('close-menu-button'), mobileMenu = document.getElementById('mobile-menu');
+        const openMenu = () => { mobileMenu.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; };
+        const closeMenu = () => { mobileMenu.classList.add('translate-x-full'); document.body.style.overflow = ''; };
+        mobileMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop().split('.')[0] || 'index';
+        navLinks.forEach(link => { if (link.dataset.page === currentPage) { link.classList.add('active'); } });
+    });
+</script>
 </body>
 </html>
+
