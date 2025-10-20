@@ -3,52 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growth Calculator - Thoughtful Distribution Co</title>
+    <title>Growth Calculator - Thoughtful Distribution Co.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
     <style>
+        .nav-link.active { color: #B5A384; font-weight: 700; }
         .page-header {
             background-color: #0D1B2A; /* brand-blue */
             background-image: radial-gradient(#1E293B 1px, transparent 1px);
             background-size: 20px 20px;
-        }
-        /* Custom styles for range slider */
-        input[type="range"]::-webkit-slider-thumb {
-             -webkit-appearance: none;
-             appearance: none;
-             width: 24px;
-             height: 24px;
-             background: #B5A384; /* brand-gold */
-             cursor: pointer;
-             border-radius: 50%;
-             border: 2px solid white;
-             box-shadow: 0 0 5px rgba(0,0,0,0.2);
-        }
-        input[type="range"]::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            background: #B5A384; /* brand-gold */
-            cursor: pointer;
-            border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 0 5px rgba(0,0,0,0.2);
         }
     </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-blue': '#0D1B2A',
-                        'brand-gold': '#B5A384',
-                        'brand-gold-dark': '#A18F6D',
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { 'brand-blue': '#0D1B2A', 'brand-gold': '#B5A384', 'brand-gold-dark': '#A18F6D' }
                 }
             }
         }
@@ -56,148 +31,200 @@
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
-                <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760367605/TD-Co---Square-Logo_kepioa.png" alt="Thoughtful Distribution Co Logo" class="h-10 w-auto">
-                <span class="font-bold text-lg text-brand-blue whitespace-nowrap">Thoughtful Distribution Co</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="index.html" class="text-gray-600 hover:text-brand-gold transition-colors">Home</a>
-                <a href="services.html" class="text-gray-600 hover:text-brand-gold transition-colors">Services</a>
-                <a href="about.html" class="text-gray-600 hover:text-brand-gold transition-colors">About Us</a>
-                <a href="calculator.html" class="text-brand-gold font-bold">Growth Calculator</a>
-                <a href="contact.html" class="text-gray-600 hover:text-brand-gold transition-colors">Contact</a>
-            </div>
-            <button id="mobile-menu-btn" class="md:hidden z-[60]">
-                <i data-lucide="menu" class="menu-open-icon"></i><i data-lucide="x" class="menu-close-icon hidden"></i>
-            </button>
-        </nav>
-    </header>
-
-     <div id="mobile-menu-panel" class="hidden fixed top-0 left-0 w-full h-full bg-white z-50">
-        <div class="absolute top-0 right-0 p-4">
-             <button id="mobile-menu-close-btn"><i data-lucide="x" class="w-8 h-8 text-brand-blue"></i></button>
-        </div>
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Home</a>
-            <a href="services.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Services</a>
-            <a href="about.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">About Us</a>
-            <a href="calculator.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Growth Calculator</a>
-            <a href="contact.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Contact</a>
-        </div>
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4">
+    <a href="index.html" class="flex items-center flex-shrink-0 space-x-3">
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760650198/TD_Co_-_logo_and_color_codes.pdf_qazw7k.png" alt="Thoughtful Distribution Co Logo" class="h-14 w-auto">
+      <span class="text-lg font-semibold text-gray-800 whitespace-nowrap">Thoughtful Distribution Co.</span>
+    </a>
+    <div class="hidden md:flex flex-wrap items-center justify-end space-x-6">
+      <a href="index.html" class="nav-link" data-page="index">Home</a>
+      <a href="about.html" class="nav-link" data-page="about">About Us</a>
+      <a href="services.html" class="nav-link" data-page="services">Services</a>
+      <a href="calculator.html" class="nav-link" data-page="growth">Growth Calculator</a>
+      <a href="contact.html" class="bg-brand-gold text-white px-5 py-2 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
     </div>
+    <button id="mobile-menu-button" class="md:hidden"><i data-lucide="menu" class="text-brand-gold h-7 w-7"></i></button>
+  </nav>
+</header>
 
-    <main>
-        <section class="page-header text-white">
-            <div class="container mx-auto px-6 py-20 text-center">
-                <h1 class="text-4xl md:text-5xl font-black">Estimate Your Growth</h1>
-                <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-300">Use our interactive calculator to see the potential impact of partnering with us.</p>
-            </div>
-        </section>
+<div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center transition-transform duration-300 ease-in-out transform translate-x-full">
+  <button id="close-menu-button" class="absolute top-6 right-6"><i data-lucide="x" class="text-brand-gold h-8 w-8"></i></button>
+  <div class="flex flex-col text-center space-y-6">
+    <a href="index.html" class="text-2xl font-semibold nav-link" data-page="index">Home</a>
+    <a href="about.html" class="text-2xl font-semibold nav-link" data-page="about">About Us</a>
+    <a href="services.html" class="text-2xl font-semibold nav-link" data-page="services">Services</a>
+    <a href="calculator.html" class="text-2xl font-semibold nav-link" data-page="growth">Growth Calculator</a>
+    <a href="contact.html" class="mt-8 block bg-brand-gold text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
+  </div>
+</div>
 
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 bg-white p-8 md:p-12 rounded-xl shadow-2xl">
-                    
-                    <div class="space-y-6">
-                        <h2 class="text-2xl font-bold text-brand-blue">Your Business Details</h2>
+<main>
+    <section class="page-header text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h1 class="text-4xl md:text-5xl font-black">Forecast Your Brand's Growth</h1>
+            <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-300">Use our free tool to get an instant, data-driven estimate of your potential revenue growth.</p>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-lg border border-gray-200">
+                <!-- Calculator View -->
+                <div id="growth-calculator">
+                    <h2 class="text-3xl font-bold text-center text-brand-blue">Growth Potential Calculator</h2>
+                    <p class="text-center text-gray-600 mt-2 mb-8">Answer two simple questions to see your potential.</p>
+                    <div class="grid md:grid-cols-2 gap-6 items-end">
                         <div>
-                            <label for="currentRevenue" class="block text-sm font-medium text-gray-700">Current Average Monthly Revenue ($)</label>
-                            <input type="number" id="currentRevenue" value="10000" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold">
+                            <label for="current-channel" class="block text-sm font-medium text-gray-700">What is your primary sales channel today?</label>
+                            <select id="current-channel" name="current-channel" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-brand-gold focus:border-brand-gold rounded-md">
+                                <option value="dtc">Our Own Website (DTC)</option>
+                                <option value="marketplaces">Online Marketplaces</option>
+                                <option value="retail">Physical Retail / Wholesale</option>
+                            </select>
                         </div>
                         <div>
-                            <label for="productCount" class="block text-sm font-medium text-gray-700">Number of Products (SKUs)</label>
-                            <input type="number" id="productCount" value="25" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-gold focus:border-brand-gold">
-                        </div>
-                        <div>
-                             <label for="channelFocus" class="block text-sm font-medium text-gray-700">Primary Channel Focus</label>
-                             <div class="mt-2 flex items-center justify-between text-xs text-gray-500">
-                                <span>Digital</span>
-                                <span>Hybrid</span>
-                                <span>Physical</span>
-                             </div>
-                             <input type="range" id="channelFocus" min="0" max="100" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <label for="monthly-revenue" class="block text-sm font-medium text-gray-700">Current Approx. Monthly Revenue?</label>
+                            <select id="monthly-revenue" name="monthly-revenue" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-brand-gold focus:border-brand-gold rounded-md">
+                                <option value="25000">$10k - $50k</option>
+                                <option value="75000">$50k - $100k</option>
+                                <option value="150000">$100k - $200k</option>
+                                <option value="350000">$200k - $500k</option>
+                                <option value="750000">$500k+</option>
+                            </select>
                         </div>
                     </div>
+                    <button id="calculate-btn" class="w-full mt-8 bg-brand-gold text-white font-semibold py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-md">Calculate My Growth Potential</button>
+                </div>
 
-                    <div class="bg-brand-blue text-white p-8 rounded-lg flex flex-col justify-center items-center text-center shadow-lg">
-                        <h3 class="text-lg font-semibold text-brand-gold">Your Potential Monthly Revenue</h3>
-                        <p id="projectedRevenue" class="text-4xl md:text-5xl font-black my-4">$15,750</p>
-                        <div class="w-full h-px bg-white/20 my-4"></div>
-                        <h4 class="font-semibold">Estimated Monthly Growth</h4>
-                        <p id="growthPercentage" class="text-2xl font-bold text-brand-gold">57.5%</p>
-                         <a href="contact.html" class="mt-8 w-full text-center bg-brand-gold text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-sm">Discuss My Results</a>
-                         <p class="text-xs mt-4 text-gray-400">*This is an estimate. Actual results may vary based on product, market, and strategy.</p>
-                    </div>
-
+                <!-- Results View (Initially hidden) -->
+                <div id="growth-results" class="hidden text-center">
+                     <h2 class="text-2xl font-bold text-brand-blue">Your Estimated Growth Potential</h2>
+                     <p class="text-gray-600 mt-2">Based on your inputs, our strategic partnership could unlock significant new revenue.</p>
+                     <div class="my-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                         <p class="text-sm uppercase text-gray-500 tracking-wider">Estimated Additional Annual Revenue</p>
+                         <p id="potential-revenue" class="text-5xl font-black text-brand-gold mt-2">$0</p>
+                     </div>
+                     <p class="text-sm text-gray-500">Brands that partner with us for strategic growth often see a 30-50% increase in overall revenue.</p>
+                     
+                     <div class="mt-8 pt-8 border-t border-gray-200">
+                        <h3 class="text-xl font-bold text-brand-blue">Ready to Build the Strategy?</h3>
+                        <p class="text-gray-600 mt-2">Let's schedule a call to discuss the data behind this projection.</p>
+                        <a href="contact.html" class="mt-4 inline-block bg-brand-gold text-white font-semibold py-2 px-6 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-sm">Schedule a Consultation</a>
+                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    
-    <footer class="bg-gray-900 text-gray-400">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn'), 
-                  mobileMenuPanel = document.getElementById('mobile-menu-panel'), 
-                  mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
+<!-- Email Capture Modal -->
+<div id="email-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-auto text-center p-8 relative">
+        <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <i data-lucide="line-chart" class="w-12 h-12 text-brand-gold mx-auto mb-4"></i>
+        <h2 class="text-2xl font-bold text-brand-blue">Your Results Are Ready!</h2>
+        <p class="text-gray-600 mt-2 mb-6">Enter your email address to unlock your personalized growth potential estimate.</p>
+        <form id="email-form">
+            <input type="hidden" name="PrimaryChannel" id="hidden-channel">
+            <input type="hidden" name="MonthlyRevenue" id="hidden-revenue">
+            <input id="email-input" name="Email" type="email" placeholder="Enter your email address" class="w-full px-4 py-2 text-base border-gray-300 focus:outline-none focus:ring-brand-gold focus:border-brand-gold rounded-md" required>
+            <button type="submit" class="w-full mt-4 bg-brand-gold text-white font-semibold py-3 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-md">See My Results</button>
+        </form>
+    </div>
+</div>
 
-            if (mobileMenuBtn && mobileMenuPanel) {
-                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon'), 
-                      closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
-                const toggleMenu = () => {
-                    mobileMenuPanel.classList.toggle('hidden');
-                    openIcon.classList.toggle('hidden');
-                    closeIcon.classList.toggle('hidden');
-                    document.body.classList.toggle('overflow-hidden');
-                };
-                mobileMenuBtn.addEventListener('click', toggleMenu);
-                mobileMenuCloseBtn.addEventListener('click', toggleMenu);
-                mobileMenuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
-            }
-            
-            // Calculator logic
-            const currentRevenueEl = document.getElementById('currentRevenue');
-            const productCountEl = document.getElementById('productCount');
-            const channelFocusEl = document.getElementById('channelFocus');
-            const projectedRevenueEl = document.getElementById('projectedRevenue');
-            const growthPercentageEl = document.getElementById('growthPercentage');
+<footer class="bg-brand-blue text-gray-400">
+    <div class="container mx-auto px-6 py-8 text-center">
+        <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
+    </div>
+</footer>
 
-            const calculateGrowth = () => {
-                const revenue = parseFloat(currentRevenueEl.value) || 0;
-                const products = parseInt(productCountEl.value) || 0;
-                const focus = parseInt(channelFocusEl.value) || 0;
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
+        // Mobile menu logic...
+        const mobileMenuButton = document.getElementById('mobile-menu-button'), closeMenuButton = document.getElementById('close-menu-button'), mobileMenu = document.getElementById('mobile-menu');
+        const openMenu = () => { mobileMenu.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; };
+        const closeMenu = () => { mobileMenu.classList.add('translate-x-full'); document.body.style.overflow = ''; };
+        mobileMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop().split('.')[0] || 'index';
+        navLinks.forEach(link => { if (link.dataset.page === currentPage) { link.classList.add('active'); } });
 
-                // Simple growth model
-                const baseGrowth = 1.2; // 20% base growth for partnership
-                const productMultiplier = 1 + (products / 500); // More products, more potential
+        // Growth Calculator Logic
+        const calculateBtn = document.getElementById('calculate-btn');
+        const calculatorDiv = document.getElementById('growth-calculator');
+        const resultsDiv = document.getElementById('growth-results');
+        const potentialRevenueEl = document.getElementById('potential-revenue');
+        const emailModal = document.getElementById('email-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const emailForm = document.getElementById('email-form');
+
+        let calculatedPotential = 0;
+
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', () => {
+                const channelSelect = document.getElementById('current-channel');
+                const revenueSelect = document.getElementById('monthly-revenue');
+
+                const monthlyRevenue = parseInt(revenueSelect.value, 10);
+                const annualRevenue = monthlyRevenue * 12;
+                const growthPotential = annualRevenue * 0.40;
                 
-                // Digital focus (0-50 on slider) vs Physical focus (51-100)
-                const digitalWeight = 1 - (focus / 100);
-                const physicalWeight = focus / 100;
-                const channelMultiplier = 1 + (digitalWeight * 0.25) + (physicalWeight * 0.15);
+                calculatedPotential = growthPotential;
 
-                const projected = revenue * baseGrowth * productMultiplier * channelMultiplier;
-                const growthPercent = ((projected - revenue) / revenue) * 100;
-
-                projectedRevenueEl.textContent = `$${projected.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
-                growthPercentageEl.textContent = `${growthPercent.toFixed(1)}%`;
-            };
-
-            [currentRevenueEl, productCountEl, channelFocusEl].forEach(el => {
-                el.addEventListener('input', calculateGrowth);
+                // Set hidden form values
+                document.getElementById('hidden-channel').value = channelSelect.options[channelSelect.selectedIndex].text;
+                document.getElementById('hidden-revenue').value = revenueSelect.options[revenueSelect.selectedIndex].text;
+                
+                emailModal.classList.remove('hidden');
             });
-            
-            calculateGrowth(); // Initial calculation on load
-        });
-    </script>
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                emailModal.classList.add('hidden');
+            });
+        }
+        
+        if (emailForm) {
+            emailForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const submitButton = emailForm.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbxWPZDjaAOAEzB1oUvFSzqVaOSKqYdH0byzkhjkbq_mz71N4G7ZK-RAGWJjTVdPiAWN/exec';
+                const formData = new FormData(emailForm);
+
+                fetch(scriptURL, { method: 'POST', body: formData })
+                    .then(response => {
+                        console.log('Success!', response);
+                        potentialRevenueEl.textContent = calculatedPotential.toLocaleString('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0,
+                        });
+                        emailModal.classList.add('hidden');
+                        calculatorDiv.classList.add('hidden');
+                        resultsDiv.classList.remove('hidden');
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('There was an error submitting your request. Please try again.');
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'See My Results';
+                    });
+            });
+        }
+    });
+</script>
+
 </body>
 </html>
+
