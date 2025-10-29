@@ -35,3 +35,10 @@ To get started with the project, follow these steps:
    ```
 
 ## Development
+
+- Run the server -
+
+  ```bash
+  npx @11ty/eleventy --serve
+
+  ```
