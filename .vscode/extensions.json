@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ronnidc.nunjucks",
+    "aaron-bond.better-comments",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+    "ecmel.vscode-html-css",
+    "zignd.html-css-class-completion",
+    "okitavera.vscode-nunjucks-formatter",
+    "bradlc.vscode-tailwindcss",
+    "qcz.text-power-tools"
+  ]
+}

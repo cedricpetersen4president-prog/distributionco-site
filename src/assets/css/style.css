@@ -1,0 +1,17 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb; /* cool-gray-50 */
+  color: #0d1b2a; /* brand-blue */
+}
+
+/* Defines the subtle dot-grid background for the main hero section */
+.hero-bg {
+  background-color: #0d1b2a; /* brand-blue */
+  background-image: radial-gradient(#1e293b 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Controls the smooth fade-in/fade-out transition for the brand logo slideshow */
+#brands-slideshow-container {
+  transition: opacity 0.5s ease-in-out;
+}
