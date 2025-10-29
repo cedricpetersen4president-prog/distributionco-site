@@ -1,5 +1,7 @@
 import EleventyVitePlugin from "@11ty/eleventy-plugin-vite";
 import tailwindcss from "@tailwindcss/vite";
+import browserslist from "browserslist";
+import { browserslistToTargets } from "lightningcss";
 import path from "path";
 import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -26,8 +28,14 @@ export default async function (eleventyConfig) {
           "@": path.resolve(__dirname, "src/"),
         },
       },
-      css: {},
+      css: {
+        transformer: "lightningcss",
+        lightningcss: {
+          targets: browserslistToTargets(browserslist()),
+        },
+      },
       build: {
+        cssMinify: "lightningcss",
         mode: "production",
         emptyOutDir: true,
       },
