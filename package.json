@@ -2,5 +2,9 @@
   "devDependencies": {
     "prettier": "3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1"
-  }
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  },
+  "type": "module"
 }
