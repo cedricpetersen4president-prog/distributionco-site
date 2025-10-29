@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.debug("Main JS loaded");
+
   lucide.createIcons();
+
   const mobileMenuButton = document.getElementById("mobile-menu-button"),
     closeMenuButton = document.getElementById("close-menu-button"),
     mobileMenu = document.getElementById("mobile-menu");
@@ -105,4 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 500);
     }, 4000);
   }
+
+  console.debug("end of the road");
 });

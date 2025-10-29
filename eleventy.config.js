@@ -10,34 +10,38 @@ export default async function (eleventyConfig) {
   eleventyConfig.setInputDirectory("src");
   eleventyConfig.setLayoutsDirectory("_layouts");
   eleventyConfig.setOutputDirectory("dist");
-  eleventyConfig.setTemplateFormats("njk");
+  eleventyConfig.setTemplateFormats("njk,css,js");
   eleventyConfig.watchIgnores.add("README.md");
 
-  // eleventyConfig.addPassthroughCopy("src/css/style.css");
-  eleventyConfig.addPassthroughCopy("src/js/*.js");
+  // eleventyConfig.addPassthroughCopy("src/assets/css/*.css");
+  // eleventyConfig.addPassthroughCopy("src/assets/js/*.js");
 
   eleventyConfig.addPlugin(EleventyVitePlugin, {
     viteOptions: {
+      plugins: [tailwindcss()],
+      watch: ["src/**/*"],
+      showVersion: true,
       server: {
         clearScreen: true,
-        watch: { usePolling: true },
+        mode: "development",
+        origin: "http://localhost:8080",
       },
       resolve: {
-        alias: { "@": "/src" },
-        "/node_modules": path.resolve(__dirname, "node_modules"),
+        alias: {
+          "@": path.resolve(__dirname, "node_modules"),
+        },
       },
       css: {
         transformer: "lightningcss",
         lightningcssOptions: {
           targets: browserslistToTargets(browserslist("> 0.25%, not dead")),
         },
-        postcss: {
-          plugins: [tailwindcss()],
-        },
       },
       build: {
         mode: "production",
         cssMinify: "lightningcss",
+        sourceMap: true,
+        emptyOutDir: true,
       },
     },
   });

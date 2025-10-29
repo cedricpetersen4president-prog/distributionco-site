@@ -2,6 +2,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-plugin-vite": "^7.0.0",
+    "@tailwindcss/vite": "^4.1.16",
     "browserslist": "^4.27.0",
     "lightningcss": "^1.30.2",
     "prettier": "3.6.2",

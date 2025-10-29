@@ -1,7 +1,21 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
 body {
   font-family: "Inter", sans-serif;
   background-color: #f9fafb; /* cool-gray-50 */
   color: #0d1b2a; /* brand-blue */
+}
+
+.nav-link.active {
+  color: #b5a384;
+  font-weight: 700;
+}
+.hero-bg {
+  background-color: #0d1b2a;
+  background-image: radial-gradient(#1e293b 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* Defines the subtle dot-grid background for the main hero section */
@@ -14,4 +28,93 @@ body {
 /* Controls the smooth fade-in/fade-out transition for the brand logo slideshow */
 #brands-slideshow-container {
   transition: opacity 0.5s ease-in-out;
+}
+
+/* Section Styling */
+.section.container {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.trusted-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 40px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Slider Container */
+.brands-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Track that scrolls continuously */
+.brands-track {
+  display: flex;
+  width: calc(200% + 50px);
+  animation: scroll 20s linear infinite;
+}
+
+.brands-track img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 50px;
+  opacity: 0.9;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Hover effect */
+.brands-track img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Keyframes for continuous scroll */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover */
+.brands-slider:hover .brands-track {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trusted-title {
+    font-size: 1.5rem;
+  }
+  .brands-track img {
+    height: 60px;
+    margin: 0 30px;
+  }
+  .brands-track {
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 480px) {
+  .trusted-title {
+    font-size: 1.3rem;
+  }
+  .brands-track img {
+    height: 50px;
+    margin: 0 20px;
+  }
+  .brands-track {
+    animation-duration: 12s;
+  }
 }
