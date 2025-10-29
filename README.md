@@ -18,6 +18,7 @@ To get started with the project, follow these steps:
 - Eleventy (11ty) for static site generation
 - Tailwind CSS for styling
 - Prettier for code formatting
+- [Nunjucks](https://mozilla.github.io/nunjucks/) as the templating engine
 
 ## Installation
 

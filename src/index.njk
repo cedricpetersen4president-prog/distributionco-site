@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thoughtful Distribution Co.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .nav-link.active { color: #B5A384; font-weight: 700; }
-        .hero-bg { background-color: #0D1B2A; background-image: radial-gradient(#1E293B 1px, transparent 1px); background-size: 20px 20px; }
-    </style>
-     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], },
-                    colors: { 'brand-blue': '#0D1B2A', 'brand-gold': '#B5A384', 'brand-gold-dark': '#A18F6D' }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-gray-50">
+---
+layout: main.njk
+title: My Rad Liquid Blog Post
+---
 
 <!-- Loading Screen -->
 <div id="loading-screen" class="fixed inset-0 bg-gray-50 z-[100] flex items-center justify-center transition-opacity duration-500 ease-in-out">
@@ -116,7 +92,7 @@
             <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Stop juggling multiple vendors. We provide a single, streamlined solution to place your products where customers are buying from niche online stores to major marketplaces and physical retail.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
                 <div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg"><i data-lucide="monitor-smartphone" class="w-10 h-10 text-brand-gold mb-4"></i><h3 class="font-bold text-xl text-brand-blue">Direct-to-Consumer</h3><p class="text-gray-600 mt-2">We own and operate a portfolio of successful e-commerce sites, giving your products direct access to passionate, targeted audiences.</p></div>
- 		<div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg"><i data-lucide="handshake" class="w-10 h-10 text-brand-gold mb-4"></i><h3 class="font-bold text-xl text-brand-blue">Wholesale Distribution</h3><p class="text-gray-600 mt-2">We focus on consistent ordering and brand-first practices that support long-term growth.</p></div>                
+ 		<div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg"><i data-lucide="handshake" class="w-10 h-10 text-brand-gold mb-4"></i><h3 class="font-bold text-xl text-brand-blue">Wholesale Distribution</h3><p class="text-gray-600 mt-2">We focus on consistent ordering and brand-first practices that support long-term growth.</p></div>
                 <div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg"><i data-lucide="store" class="w-10 h-10 text-brand-gold mb-4"></i><h3 class="font-bold text-xl text-brand-blue">Online Marketplaces</h3><p class="text-gray-600 mt-2">We manage your presence on curated marketplaces to maximize visibility and protect brand integrity.</p></div>
 		<div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg"><i data-lucide="map-pin" class="w-10 h-10 text-brand-gold mb-4"></i><h3 class="font-bold text-xl text-brand-blue">Physical & Event Retail</h3><p class="text-gray-600 mt-2">We secure placement at key industry events, putting your products directly into customers' hands.</p></div>
             </div>
@@ -246,7 +222,7 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const currentPage = window.location.pathname.split('/').pop().split('.')[0] || 'index';
         navLinks.forEach(link => { if (link.dataset.page === currentPage) { link.classList.add('active'); } });
-        
+
         const kpiSection = document.getElementById('kpi-section');
         const kpiData = { revenue: 1.5, growth: 135, map: 100, skus: 180, marketplaces: 5, orders: 130 };
         let animationHasRun = false;
@@ -291,5 +267,3 @@
         }
     });
 </script>
-</body>
-</html>
