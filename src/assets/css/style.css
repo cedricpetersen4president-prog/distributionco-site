@@ -1,6 +1,10 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+@import "tailwindcss";
+@theme {
+  --font-family: "Inter", sans-serif;
+  --color-brand-blue: #0d1b2a;
+  --color-brand-gold: #b5a384;
+  --color-brand-gold-dark: #a18f6d;
+}
 
 body {
   font-family: "Inter", sans-serif;
