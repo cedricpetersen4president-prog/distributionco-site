@@ -122,3 +122,21 @@ body {
     animation-duration: 12s;
   }
 }
+
+.page-header {
+  background-color: #0d1b2a; /* brand-blue */
+  background-image: radial-gradient(#1e293b 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.belief-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+.belief-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

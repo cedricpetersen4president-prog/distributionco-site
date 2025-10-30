@@ -17,10 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
   mobileMenuButton.addEventListener("click", openMenu);
   closeMenuButton.addEventListener("click", closeMenu);
   const navLinks = document.querySelectorAll(".nav-link");
+
+  const pageTitle = (document.title || "").split("|").pop().trim();
+  const formattedTitle = pageTitle.toLowerCase().replace(/\s+/g, "-");
+
   const currentPage =
     window.location.pathname.split("/").pop().split(".")[0] || "index";
+
   navLinks.forEach((link) => {
-    if (link.dataset.page === currentPage) {
+    if (
+      link.dataset.page === formattedTitle ||
+      link.dataset.page === currentPage
+    ) {
       link.classList.add("active");
     }
   });
@@ -100,14 +108,179 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Loading Screen Logic
   const loadingScreen = document.getElementById("loading-screen");
-  if (loadingScreen) {
+  const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+    const [name, value] = cookie.split("=");
+    acc[name] = value;
+    return acc;
+  }, {});
+
+  const hasSeenLoadingScreen = cookies["loadingScreenShown"] === "true";
+  if (hasSeenLoadingScreen) {
+    if (loadingScreen) {
+      loadingScreen.style.display = "none";
+    }
+  }
+
+  if (loadingScreen && !hasSeenLoadingScreen) {
     setTimeout(() => {
       loadingScreen.classList.add("opacity-0");
       setTimeout(() => {
         loadingScreen.style.display = "none";
       }, 500);
     }, 4000);
+    /* set cookie to say loading screen has been shown */
+    document.cookie = "loadingScreenShown=true; max-age=31536000; path=/";
+  }
+  /* End Loading Screen Logic */
+
+  /* Growth Calculator Logic */
+  const calculateBtn = document.getElementById("calculate-btn");
+  const calculatorDiv = document.getElementById("growth-calculator");
+  const resultsDiv = document.getElementById("growth-results");
+  const potentialRevenueEl = document.getElementById("potential-revenue");
+  const emailModal = document.getElementById("email-modal");
+  const closeModalBtn = document.getElementById("close-modal-btn");
+  const emailForm = document.getElementById("email-form");
+
+  let calculatedPotential = 0;
+
+  if (calculateBtn) {
+    calculateBtn.addEventListener("click", () => {
+      const channelSelect = document.getElementById("current-channel");
+      const revenueSelect = document.getElementById("monthly-revenue");
+
+      const monthlyRevenue = parseInt(revenueSelect.value, 10);
+      const annualRevenue = monthlyRevenue * 12;
+      const growthPotential = annualRevenue * 0.4;
+
+      calculatedPotential = growthPotential;
+
+      // Set hidden form values
+      document.getElementById("hidden-channel").value =
+        channelSelect.options[channelSelect.selectedIndex].text;
+      document.getElementById("hidden-revenue").value =
+        revenueSelect.options[revenueSelect.selectedIndex].text;
+
+      emailModal.classList.remove("hidden");
+    });
   }
 
-  console.debug("end of the road");
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", () => {
+      emailModal.classList.add("hidden");
+    });
+  }
+
+  if (emailForm) {
+    emailForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const submitButton = emailForm.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxWPZDjaAOAEzB1oUvFSzqVaOSKqYdH0byzkhjkbq_mz71N4G7ZK-RAGWJjTVdPiAWN/exec";
+      const formData = new FormData(emailForm);
+
+      fetch(scriptURL, { method: "POST", body: formData })
+        .then((response) => {
+          console.log("Success!", response);
+          potentialRevenueEl.textContent = calculatedPotential.toLocaleString(
+            "en-US",
+            {
+              style: "currency",
+              currency: "USD",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }
+          );
+          emailModal.classList.add("hidden");
+          calculatorDiv.classList.add("hidden");
+          resultsDiv.classList.remove("hidden");
+        })
+        .catch((error) => {
+          console.error("Error!", error.message);
+          alert(
+            "There was an error submitting your request. Please try again."
+          );
+          submitButton.disabled = false;
+          submitButton.textContent = "See My Results";
+        });
+    });
+  }
+  /* End Growth Calculator Logic */
+
+  /* contact us form */
+  const form = document.getElementById("contact-form");
+  if (form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+      const formData = new FormData(form);
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyxnh56YKou6WfB9A89-HLjT0-Mt-OYPy7OmZgkSYglwa0JGOiylYcXwq3M6zhx9z2q/exec";
+      fetch(scriptURL, { method: "POST", body: formData })
+        .then((response) => {
+          console.log("Success!", response);
+          submitButton.textContent = "Submitted Successfully!";
+          submitButton.classList.remove(
+            "bg-brand-gold",
+            "hover:bg-brand-gold-dark"
+          );
+          submitButton.classList.add("bg-green-500");
+          form.reset();
+          setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = "Submit Inquiry";
+            submitButton.classList.remove("bg-green-500");
+            submitButton.classList.add(
+              "bg-brand-gold",
+              "hover:bg-brand-gold-dark"
+            );
+          }, 5000);
+        })
+        .catch((error) => {
+          console.error("Error!", error.message);
+          submitButton.textContent = "Error! Please try again.";
+          submitButton.classList.remove(
+            "bg-brand-gold",
+            "hover:bg-brand-gold-dark"
+          );
+          submitButton.classList.add("bg-red-500");
+          setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = "Submit Inquiry";
+            submitButton.classList.remove("bg-red-500");
+            submitButton.classList.add(
+              "bg-brand-gold",
+              "hover:bg-brand-gold-dark"
+            );
+          }, 5000);
+        });
+    });
+  }
+  /* end contact us form */
+  /* about us page logic */
+  // Intersection Observer for scroll animations
+  const about_observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Add a delay based on the item's index to stagger the animation
+          entry.target.style.transitionDelay = `${index * 100}ms`;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  const beliefCards = document.querySelectorAll(".belief-card");
+  beliefCards.forEach((card) => about_observer.observe(card));
+  /* End about us page logic */
+  console.debug("Main JS initialized");
 });
