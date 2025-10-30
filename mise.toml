@@ -2,4 +2,14 @@
 idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
-node = "latest"
+node = "lts"
+
+[env]
+_.path = ['{{config_root}}/node_modules/.bin']
+# Use the project name derived from the current directory
+PROJECT_NAME = "{{ config_root | basename }}"
+
+# Set up the path for node module binaries
+BIN_PATH = "{{ config_root }}/node_modules/.bin"
+
+NODE_ENV = "{{ env.NODE_ENV | default(value='development') }}"
