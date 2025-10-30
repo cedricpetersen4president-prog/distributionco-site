@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distribution.Co - Multi-Channel Growth Partners</title>
+    <title>Thoughtful Distribution Co.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,27 +11,15 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .hero-bg {
-            background-color: #0D1B2A; /* brand-blue */
-            background-image: radial-gradient(#1E293B 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-        #brands-slideshow-container {
-            transition: opacity 0.5s ease-in-out;
-        }
+        .nav-link.active { color: #B5A384; font-weight: 700; }
+        .hero-bg { background-color: #0D1B2A; background-image: radial-gradient(#1E293B 1px, transparent 1px); background-size: 20px 20px; }
     </style>
-    <script>
+     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-blue': '#0D1B2A',
-                        'brand-gold': '#B5A384',
-                        'brand-gold-dark': '#A18F6D',
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { 'brand-blue': '#0D1B2A', 'brand-gold': '#B5A384', 'brand-gold-dark': '#A18F6D' }
                 }
             }
         }
@@ -39,129 +27,338 @@
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-200">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-brand-blue tracking-wider">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 0L100 25V75L50 100L0 75V25L50 0Z" fill="#0D1B2A"/>
-                    <path d="M50 0L0 25V75L50 100V0Z" fill="#B5A384"/>
-                </svg>
-                <span>Distribution.Co</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="index.html" class="text-brand-gold font-bold">Home</a>
-                <a href="services.html" class="text-gray-600 hover:text-brand-gold transition-colors">Services</a>
-                <a href="about.html" class="text-gray-600 hover:text-brand-gold transition-colors">About Us</a>
-                <a href="calculator.html" class="text-gray-600 hover:text-brand-gold transition-colors">Growth Calculator</a>
-                <a href="contact.html" class="bg-brand-gold text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-sm">Partner With Us</a>
-            </div>
-            <button id="mobile-menu-btn" class="md:hidden z-[60]">
-                <i data-lucide="menu" class="menu-open-icon"></i><i data-lucide="x" class="menu-close-icon hidden"></i>
-            </button>
-        </nav>
-    </header>
+<!-- Loading Screen -->
+<div id="loading-screen" class="fixed inset-0 bg-gray-50 z-[100] flex items-center justify-center transition-opacity duration-500 ease-in-out">
+    <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760650198/TD_Co_-_logo_and_color_codes.pdf_qazw7k.png" alt="Thoughtful Distribution Co Logo" class="h-20 w-auto animate-pulse">
+</div>
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-4">
+    <a href="index.html" class="flex items-center flex-shrink-0 space-x-3">
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1760650198/TD_Co_-_logo_and_color_codes.pdf_qazw7k.png" alt="Thoughtful Distribution Co Logo" class="h-14 w-auto">
+      <span class="text-lg font-semibold text-gray-800 whitespace-nowrap">Thoughtful Distribution Co.</span>
+    </a>
+    <div class="hidden md:flex flex-wrap items-center justify-end space-x-6">
+      <a href="index.html" class="nav-link" data-page="index">Home</a>
+      <a href="services.html" class="nav-link" data-page="services">Services</a>
+      <a href="about.html" class="nav-link" data-page="about">About Us</a>
+      <a href="calculator.html" class="nav-link" data-page="growth">Growth Calculator</a>
+      <a href="contact.html" class="bg-brand-gold text-white px-5 py-2 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden"><i data-lucide="menu" class="text-brand-gold h-7 w-7"></i></button>
+  </nav>
+</header>
+
+<div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center transition-transform duration-300 ease-in-out transform translate-x-full">
+  <button id="close-menu-button" class="absolute top-6 right-6"><i data-lucide="x" class="text-brand-gold h-8 w-8"></i></button>
+  <div class="flex flex-col text-center space-y-6">
+    <a href="index.html" class="nav-link" data-page="index">Home</a>
+      <a href="services.html" class="nav-link" data-page="services">Services</a>
+      <a href="about.html" class="nav-link" data-page="about">About Us</a>
+      <a href="calculator.html" class="nav-link" data-page="growth">Growth Calculator</a>
+      <a href="contact.html" class="bg-brand-gold text-white px-5 py-2 rounded-lg font-semibold hover:bg-brand-gold-dark transition">Partner With Us</a>
+  </div>
+</div>
+
+<main>
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight">Your All-in-One Distribution Partner.</h1>
+            <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">From niche e-commerce to major marketplaces,<br> we connect your brand with customers, wherever they shop.</p>
+            <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold py-3 px-8 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <section class="bg-white py-20 border-b border-gray-200">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-3xl md:text-4xl font-extrabold text-brand-blue mb-2">Results You Can Count On</h2>
+<p class="text-gray-600 text-lg mb-10">We're committed to delivering tangible results that drive your business forward.</p>
+</div>
+
+    <section id="kpi-section" class="bg-white py-12 border-t border-gray-200">
+  <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
     
-    <div id="mobile-menu-panel" class="hidden fixed top-0 left-0 w-full h-full bg-white z-50">
-        <div class="absolute top-0 right-0 p-4">
-             <button id="mobile-menu-close-btn"><i data-lucide="x" class="w-8 h-8 text-brand-blue"></i></button>
-        </div>
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="index.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Home</a>
-            <a href="services.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Services</a>
-            <a href="about.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">About Us</a>
-            <a href="calculator.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Growth Calculator</a>
-            <a href="contact.html" class="text-2xl font-bold text-brand-blue hover:text-brand-gold">Contact</a>
-        </div>
+    <!-- KPI Card -->
+    <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-white">
+      <h3 id="kpi-revenue" class="text-4xl font-bold text-brand-gold">$0M</h3>
+      <p class="mt-2 text-gray-600 font-semibold">Annual Partner Revenue</p>
+      <p class="text-sm text-gray-400 mt-1">Generated across our network in the last fiscal year.</p>
     </div>
 
-    <main>
-        <section class="hero-bg text-white py-20 md:py-32">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight">A Full-Spectrum Distribution Partner.</h1>
-                <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">We build resilient brands by diversifying revenue streams across direct e-commerce, online marketplaces, and physical retail channels.</p>
-                <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold py-3 px-8 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Schedule a Consultation</a>
-            </div>
-        </section>
+    <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-white">
+      <h3 id="kpi-growth" class="text-4xl font-bold text-brand-gold">0%</h3>
+      <p class="mt-2 text-gray-600 font-semibold">YoY Growth</p>
+      <p class="text-sm text-gray-400 mt-1">Driven by consistent sell-through and smart channel management.</p>
+    </div>
 
-        <section class="bg-white py-12 border-b border-gray-200">
-             <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="p-4"><h3 id="kpi-revenue" class="text-4xl font-bold text-brand-gold">$0</h3><p class="mt-2 text-gray-500 font-medium">Annual Partner Revenue</p></div>
-                <div class="p-4"><h3 id="kpi-growth" class="text-4xl font-bold text-brand-gold">0%</h3><p class="mt-2 text-gray-500 font-medium">Average YoY Growth</p></div>
-                <div class="p-4"><h3 id="kpi-map" class="text-4xl font-bold text-brand-gold">0%</h3><p class="mt-2 text-gray-500 font-medium">MAP Policy Compliance</p></div>
-            </div>
-        </section>
+    <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-white">
+      <h3 id="kpi-orders" class="text-4xl font-bold text-brand-gold">0K+</h3>
+      <p class="mt-2 text-gray-600 font-semibold">Annual Orders Fulfilled</p>
+      <p class="text-sm text-gray-400 mt-1">Fulfilled across our network in the last 12 months.</p>
+    </div>
 
-        <section class="py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-brand-blue mb-2">A Holistic Approach to Brand Growth</h2>
-                <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">We build resilient, profitable brands by mastering every sales channel.</p>
-                <div class="grid md:grid-cols-3 gap-8 text-left">
-                    <div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
-                        <i data-lucide="monitor-smartphone" class="w-10 h-10 text-brand-gold mb-4"></i>
-                        <h3 class="font-bold text-xl text-brand-blue">Direct-to-Consumer</h3>
-                        <p class="text-gray-600 mt-2">We build and optimize your most valuable asset: your own e-commerce store.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
-                        <i data-lucide="store" class="w-10 h-10 text-brand-gold mb-4"></i>
-                        <h3 class="font-bold text-xl text-brand-blue">Online Marketplaces</h3>
-                        <p class="text-gray-600 mt-2">We manage your presence on curated marketplaces to maximize visibility and protect brand integrity.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg border border-gray-200 shadow-lg">
-                        <i data-lucide="map-pin" class="w-10 h-10 text-brand-gold mb-4"></i>
-                        <h3 class="font-bold text-xl text-brand-blue">Physical & Event Retail</h3>
-                        <p class="text-gray-600 mt-2">We provide the logistics and strategy to launch your brand into physical stores and pop-up events.</p>
-                    </div>
-                </div>
-                 <a href="services.html" class="mt-12 inline-block font-semibold text-brand-gold hover:text-brand-gold-dark">Explore Our Services in Detail <i data-lucide="arrow-right" class="inline w-4 h-4"></i></a>
-            </div>
-        </section>
+    <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-white">
+      <h3 id="kpi-skus" class="text-4xl font-bold text-brand-gold">0+</h3>
+      <p class="mt-2 text-gray-600 font-semibold">Active SKUs</p>
+      <p class="text-sm text-gray-400 mt-1">Actively stocked and replenished across our catalog.</p>
+    </div>
 
-        <section class="py-20 bg-white border-y border-gray-200">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-brand-blue mb-2">Unlock Your Growth Potential</h2>
-                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Use our free tool to get an instant estimate of your brand's multi-channel growth opportunity.</p>
-                <a href="calculator.html" class="bg-brand-gold text-white font-semibold py-3 px-12 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg text-lg">Go to Growth Calculator</a>
-            </div>
-        </section>
-    </main>
+    <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-white">
+      <h3 id="kpi-marketplaces" class="text-4xl font-bold text-brand-gold">0</h3>
+      <p class="mt-2 text-gray-600 font-semibold">Active Marketplaces</p>
+      <p class="text-sm text-gray-400 mt-1">Live across five major marketplaces for broader reach.</p>
+    </div>
 
-    <footer class="bg-brand-blue text-gray-400">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Distribution.Co. All Rights Reserved.</p>
+    <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-white">
+      <h3 id="kpi-map" class="text-4xl font-bold text-brand-gold">0%</h3>
+      <p class="mt-2 text-gray-600 font-semibold">MAP Policy Compliance</p>
+      <p class="text-sm text-gray-400 mt-1">Ensuring your brand integrity is protected across all channels.</p>
+    </div>
+    
+  </div>
+</section>
+
+
+    <<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-brand-blue mb-4">A Distribution Model Built For Growth.</h2>
+    <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+      Stop juggling multiple vendors. We provide a single, streamlined solution to place your products where customers are buying, from niche online stores to major marketplaces and physical retail.
+    </p>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+      
+      <!-- Card -->
+      <div class="p-8 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 transform">
+        <div class="flex items-center justify-start mb-4">
+          <i data-lucide="monitor-smartphone" class="w-10 h-10 text-brand-gold"></i>
         </div>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            const kpiData = { revenue: 125000000, growth: 35, map: 100 };
-            function animateCounter(id, finalValue, duration, isCurrency = false) {
-                const element = document.getElementById(id); if (!element) return;
-                let start = 0, stepTime = 16, steps = duration / stepTime, increment = finalValue / steps;
-                const timer = setInterval(() => {
-                    start += increment;
-                    if (start >= finalValue) { start = finalValue; clearInterval(timer); }
-                    let text = isCurrency ? '$' + Math.floor(start / 1000000) + 'M+' : Math.floor(start) + '%';
-                    if (id === 'kpi-map') text = Math.floor(start) + '%';
-                    element.textContent = text;
-                }, stepTime);
-            }
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn'), mobileMenuPanel = document.getElementById('mobile-menu-panel'), mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
-            if (mobileMenuBtn && mobileMenuPanel) {
-                const openIcon = mobileMenuBtn.querySelector('.menu-open-icon'), closeIcon = mobileMenuBtn.querySelector('.menu-close-icon');
-                const toggleMenu = () => {
-                    mobileMenuPanel.classList.toggle('hidden');
-                    openIcon.classList.toggle('hidden');
-                    closeIcon.classList.toggle('hidden');
-                    document.body.classList.toggle('overflow-hidden');
-                };
-                mobileMenuBtn.addEventListener('click', toggleMenu);
-                mobileMenuCloseBtn.addEventListener('click', toggleMenu);
-                mobileMenuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
-            }
-            animateCounter('kpi-revenue', kpiData.revenue, 1500, true);
-            animateCounter('kpi-growth', kpiData.growth, 1500);
-            animateCounter('kpi-map', kpiData.map, 1500);
-        });
-    </script>
+        <h3 class="font-bold text-xl text-brand-blue">Direct-to-Consumer</h3>
+        <p class="text-gray-600 mt-2">
+          We own and operate a portfolio of successful <br> e-commerce sites, giving your products direct access to passionate, targeted audiences.
+        </p>
+      </div>
+
+      <div class="p-8 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 transform">
+        <div class="flex items-center justify-start mb-4">
+          <i data-lucide="handshake" class="w-10 h-10 text-brand-gold"></i>
+        </div>
+        <h3 class="font-bold text-xl text-brand-blue">Wholesale Distribution</h3>
+        <p class="text-gray-600 mt-2">
+          We focus on consistent ordering and brand-first practices that support long-term growth.
+        </p>
+      </div>
+
+      <div class="p-8 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 transform">
+        <div class="flex items-center justify-start mb-4">
+          <i data-lucide="store" class="w-10 h-10 text-brand-gold"></i>
+        </div>
+        <h3 class="font-bold text-xl text-brand-blue">Online Marketplaces</h3>
+        <p class="text-gray-600 mt-2">
+          We manage your presence on curated marketplaces to maximize visibility and protect brand integrity.
+        </p>
+      </div>
+
+      <div class="p-8 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 transform">
+        <div class="flex items-center justify-start mb-4">
+          <i data-lucide="map-pin" class="w-10 h-10 text-brand-gold"></i>
+        </div>
+        <h3 class="font-bold text-xl text-brand-blue">Physical & Event Retail</h3>
+        <p class="text-gray-600 mt-2">
+          We secure placement at key industry events, putting your products directly into customers' hands.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CTA Link -->
+    <a href="services.html"
+       class="mt-12 inline-block font-semibold text-brand-gold hover:text-brand-gold-dark transition-colors duration-300">
+      Explore Our Services in Detail 
+      <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i>
+    </a>
+  </div>
+</section>
+
+    <section class="py-20 bg-brand-blue text-white border-y border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-brand-white mb-2">Unlock Your Growth Potential</h2>
+            <p class="text-lg text-white-600 mb-8 max-w-2xl mx-auto">Use our free tool to get an instant estimate of your brand's multi-channel growth opportunity.</p>
+            <a href="calculator.html" class="bg-brand-gold text-white font-semibold py-3 px-12 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg text-lg">Go to Growth Calculator</a>
+        </div>
+    </section>
+<section class="section container">
+  <h2 class="trusted-title">Trusted by a growing number of forward-thinking brands</h2>
+
+  <div class="brands-slider">
+    <div class="brands-track">
+      <!-- Original 5 logos -->
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-a.png" alt="Brand A" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-b.png" alt="Brand B" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-c.png" alt="Brand C" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-d.png" alt="Brand D" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-e.png" alt="Brand E" />
+
+      <!-- Clone logos to create seamless loop -->
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-a.png" alt="Brand A" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-b.png" alt="Brand B" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-c.png" alt="Brand C" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-d.png" alt="Brand D" />
+      <img src="https://949b4d83.distributionco-site.pages.dev/assets/brand-e.png" alt="Brand E" />
+    </div>
+  </div>
+</section>
+
+<style>
+/* Section Styling */
+.section.container {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.trusted-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 40px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Slider Container */
+.brands-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Track that scrolls continuously */
+.brands-track {
+  display: flex;
+  width: calc(200% + 50px);
+  animation: scroll 20s linear infinite;
+}
+
+.brands-track img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 50px;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover effect */
+.brands-track img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Keyframes for continuous scroll */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.brands-slider:hover .brands-track {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trusted-title { font-size: 1.5rem; }
+  .brands-track img { height: 60px; margin: 0 30px; }
+  .brands-track { animation-duration: 15s; }
+}
+
+@media (max-width: 480px) {
+  .trusted-title { font-size: 1.3rem; }
+  .brands-track img { height: 50px; margin: 0 20px; }
+  .brands-track { animation-duration: 12s; }
+}
+</style>
+
+
+  <section class="bg-brand-blue text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h2 class="text-3xl font-bold">Ready to Scale Your Brand?</h2>
+            <p class="mt-3 text-lg text-gray-300 max-w-2xl mx-auto">Let's build a powerful, multi-channel distribution strategy that drives real growth for your business.</p>
+            <a href="contact.html" class="mt-8 inline-block bg-brand-gold text-white font-semibold py-3 px-8 rounded-lg hover:bg-brand-gold-dark transition-colors shadow-lg">Patner With Us</a>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-brand-white text-black-400">
+  <div class="container mx-auto px-6 py-8 text-center">
+    <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-4">
+      <a href="/privacy" class="hover:text-blue-500 transition-colors">Privacy Policy</a>
+      <a href="/refund" class="hover:text-blue-500 transition-colors">Refund Policy</a>
+      <a href="/shipping" class="hover:text-blue-500 transition-colors">Shipping Policy</a>
+      <a href="/tos" class="hover:text-blue-500 transition-colors">Terms of Service</a>
+      <a href="/contact" class="hover:text-blue-500 transition-colors">Contact Us</a>
+    </div>
+    <p>&copy; 2025 Thoughtful Distribution Co. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
+        const mobileMenuButton = document.getElementById('mobile-menu-button'), closeMenuButton = document.getElementById('close-menu-button'), mobileMenu = document.getElementById('mobile-menu');
+        const openMenu = () => { mobileMenu.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; };
+        const closeMenu = () => { mobileMenu.classList.add('translate-x-full'); document.body.style.overflow = ''; };
+        mobileMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        const navLinks = document.querySelectorAll('.nav-link');
+        const currentPage = window.location.pathname.split('/').pop().split('.')[0] || 'index';
+        navLinks.forEach(link => { if (link.dataset.page === currentPage) { link.classList.add('active'); } });
+        
+        const kpiSection = document.getElementById('kpi-section');
+        const kpiData = { revenue: 1.5, growth: 135, map: 100, skus: 180, marketplaces: 5, orders: 130 };
+        let animationHasRun = false;
+        function animateNumber(id, finalValue, duration, formatFn) {
+            const element = document.getElementById(id); if (!element) return;
+            let start = 0, stepTime = 16, steps = duration / stepTime, increment = finalValue / steps;
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= finalValue) { start = finalValue; clearInterval(timer); }
+                element.textContent = formatFn(start);
+            }, stepTime);
+        }
+        function startKpiAnimation() {
+            if (animationHasRun) return;
+            animationHasRun = true;
+            animateNumber('kpi-revenue', kpiData.revenue, 1500, (val) => '$' + val.toFixed(1) + 'M');
+            animateNumber('kpi-growth', kpiData.growth, 1500, (val) => Math.floor(val) + '%');
+            animateNumber('kpi-map', kpiData.map, 1500, (val) => Math.floor(val) + '%');
+            animateNumber('kpi-skus', kpiData.skus, 1500, (val) => Math.floor(val) + '+');
+            animateNumber('kpi-marketplaces', kpiData.marketplaces, 1500, (val) => Math.floor(val));
+            animateNumber('kpi-orders', kpiData.orders, 1500, (val) => Math.floor(val) + 'K+');
+        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startKpiAnimation();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        if (kpiSection) { observer.observe(kpiSection); }
+
+        // Loading Screen Logic
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            setTimeout(() => {
+                loadingScreen.classList.add('opacity-0');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 4000);
+        }
+    });
+</script>
 </body>
 </html>
