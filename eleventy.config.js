@@ -17,6 +17,7 @@ export default async function (eleventyConfig) {
     viteOptions: {
       plugins: [tailwindcss()],
       showVersion: true,
+      appType: "custom",
       server: {
         clearScreen: true,
         mode: "development",
@@ -32,12 +33,15 @@ export default async function (eleventyConfig) {
         transformer: "lightningcss",
         lightningcss: {
           targets: browserslistToTargets(browserslist()),
+          sourcemap: true,
         },
+        devSourcemap: true,
       },
       build: {
         cssMinify: "lightningcss",
         mode: "production",
         emptyOutDir: true,
+        sourcemap: true,
       },
     },
   });
