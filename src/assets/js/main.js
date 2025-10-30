@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         loadingScreen.style.display = "none";
       }, 500);
-    }, 4000);
+    }, 2000);
     /* set cookie to say loading screen has been shown */
     document.cookie = "loadingScreenShown=true; max-age=31536000; path=/";
   }
