@@ -43,3 +43,5 @@ To get started with the project, follow these steps:
   npx @11ty/eleventy --serve
 
   ```
+
+## Cloudflare Pages is used for hosting and deployment. Every push to the main branch triggers a new build and deployment.
