@@ -170,8 +170,99 @@
         </p>
       </div>
 
-    </div>
+<section class="section container">
+  <h2 class="trusted-title">Trusted by a growing number of forward-thinking brands</h2>
 
+  <div class="brands-slider">
+    <div class="brands-track">
+      <!-- Original 5 logos -->
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---BBW_yjdhit.png" alt="Brand A" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---VetOne_k9dpvr.png" alt="Brand B" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---McKesson_ibcldh.png" alt="Brand C" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---Labello_jwnnqi.png" alt="Brand D" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---Stryker_qvvreh.png" alt="Brand E" />
+
+      <!-- Clone logos to create seamless loop -->
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---BBW_yjdhit.png" alt="Brand A" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---VetOne_k9dpvr.png" alt="Brand B" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---McKesson_ibcldh.png" alt="Brand C" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---Labello_jwnnqi.png" alt="Brand D" />
+      <img src="https://res.cloudinary.com/dtwmyyf3b/image/upload/v1761834552/TOP-COMPANIES-WE-WORK-WITH---Stryker_qvvreh.png" alt="Brand E" />
+    </div>
+  </div>
+</section>
+
+<style>
+/* Section Styling */
+.section.container {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.trusted-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 40px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Slider Container */
+.brands-slider {
+  overflow: hidden;
+  position: relative;
+  width: 200%;
+  max-width: 400%;
+}
+
+/* Track that scrolls continuously */
+.brands-track {
+  display: flex;
+  width: calc(200% + 50px);
+  animation: scroll 20s linear infinite;
+}
+
+.brands-track img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 50px;
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover effect */
+.brands-track img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Keyframes for continuous scroll */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.brands-slider:hover .brands-track {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trusted-title { font-size: 1.5rem; }
+  .brands-track img { height: 60px; margin: 0 30px; }
+  .brands-track { animation-duration: 15s; }
+}
+
+@media (max-width: 480px) {
+  .trusted-title { font-size: 1.3rem; }
+  .brands-track img { height: 50px; margin: 0 20px; }
+  .brands-track { animation-duration: 12s; }
+}
+</style>
+        
     <!-- CTA Link -->
     <a href="services.html"
        class="mt-12 inline-block font-semibold text-brand-gold hover:text-brand-gold-dark transition-colors duration-300">
